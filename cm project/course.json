@@ -1,0 +1,488 @@
+{
+  "organization": {
+    "name": "NIC Learning Portal",
+    "department": "Government of India",
+    "version": "1.0"
+  },
+  "courses": [
+    {
+      "course_id": "COURSE_001",
+      "course_name": "Entrepreneurship Development Program",
+      "course_code": "EDP-101",
+      "modules": [
+        {
+          "module_id": "MOD_001",
+          "module_name": "Entrepreneurial Ability",
+          "module_order": 1,
+          "chapters": [
+            {
+              "chapter_id": "CH_001",
+              "chapter_title": "Introduction to Entrepreneurship",
+              "chapter_order": 1,
+              "video_url": "material/videos/m1/c1.mp4",
+              "pdf_url": "material/pdf/m1/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_002",
+              "chapter_title": "Entrepreneurial Mindset & Traits",
+              "chapter_order": 2,
+              "video_url": "material/videos/m1/c2.mp4",
+              "pdf_url": "material/pdf/m1/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_003",
+              "chapter_title": "Identifying Business Opportunities",
+              "chapter_order": 3,
+              "video_url": "material/videos/m1/c3.mp4",
+              "pdf_url": "material/pdf/m1/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_004",
+              "chapter_title": "Risk Assessment & Decision Making",
+              "chapter_order": 4,
+              "video_url": "material/videos/m1/c4.mp4",
+              "pdf_url": "material/pdf/m1/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_005",
+              "chapter_title": "Leadership & Team Building",
+              "chapter_order": 5,
+              "video_url": "material/videos/m1/c5.mp4",
+              "pdf_url": "material/pdf/m1/c5.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_006",
+              "chapter_title": "Problem Solving & Innovation",
+              "chapter_order": 6,
+              "video_url": "material/videos/m1/c6.mp4",
+              "pdf_url": "material/pdf/m1/c6.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_007",
+              "chapter_title": "Communication Skills for Entrepreneurs",
+              "chapter_order": 7,
+              "video_url": "material/videos/m1/c7.mp4",
+              "pdf_url": "material/pdf/m1/c7.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_008",
+              "chapter_title": "Case Studies & Success Stories",
+              "chapter_order": 8,
+              "video_url": "material/videos/m1/c8.mp4",
+              "pdf_url": "material/pdf/m1/c8.pdf",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "module_id": "MOD_002",
+          "module_name": "Business Idea Generation",
+          "module_order": 2,
+          "chapters": [
+            {
+              "chapter_id": "CH_009",
+              "chapter_title": "Ideation Techniques & Tools",
+              "chapter_order": 1,
+              "video_url": "material/videos/m2/c1.mp4",
+              "pdf_url": "material/pdf/m2/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_010",
+              "chapter_title": "Market Gap Analysis",
+              "chapter_order": 2,
+              "video_url": "material/videos/m2/c2.mp4",
+              "pdf_url": "material/pdf/m2/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_011",
+              "chapter_title": "Consumer Needs Assessment",
+              "chapter_order": 3,
+              "video_url": "material/videos/m2/c3.mp4",
+              "pdf_url": "material/pdf/m2/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_012",
+              "chapter_title": "Feasibility Analysis",
+              "chapter_order": 4,
+              "video_url": "material/videos/m2/c4.mp4",
+              "pdf_url": "material/pdf/m2/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_013",
+              "chapter_title": "Business Concept Development",
+              "chapter_order": 5,
+              "video_url": "material/videos/m2/c5.mp4",
+              "pdf_url": "material/pdf/m2/c5.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_014",
+              "chapter_title": "Idea Validation Methods",
+              "chapter_order": 6,
+              "video_url": "material/videos/m2/c6.mp4",
+              "pdf_url": "material/pdf/m2/c6.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_015",
+              "chapter_title": "Pitching Your Business Idea",
+              "chapter_order": 7,
+              "video_url": "material/videos/m2/c7.mp4",
+              "pdf_url": "material/pdf/m2/c7.pdf",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "module_id": "MOD_003",
+          "module_name": "Compliances",
+          "module_order": 3,
+          "chapters": [
+            {
+              "chapter_id": "CH_016",
+              "chapter_title": "NSQF & Skill India Framework Overview",
+              "chapter_order": 1,
+              "video_url": "material/videos/m3/c1.mp4",
+              "pdf_url": "material/pdf/m3/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_017",
+              "chapter_title": "Business Registration & Licenses",
+              "chapter_order": 2,
+              "video_url": "material/videos/m3/c2.mp4",
+              "pdf_url": "material/pdf/m3/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_018",
+              "chapter_title": "Statutory Compliances",
+              "chapter_order": 3,
+              "video_url": "material/videos/m3/c3.mp4",
+              "pdf_url": "material/pdf/m3/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_019",
+              "chapter_title": "Bank Account & KYC Requirements",
+              "chapter_order": 4,
+              "video_url": "material/videos/m3/c4.mp4",
+              "pdf_url": "material/pdf/m3/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_020",
+              "chapter_title": "Records & Registers Maintenance",
+              "chapter_order": 5,
+              "video_url": "material/videos/m3/c5.mp4",
+              "pdf_url": "material/pdf/m3/c5.pdf",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "module_id": "MOD_004",
+          "module_name": "Pricing & Budgeting",
+          "module_order": 4,
+          "chapters": [
+            {
+              "chapter_id": "CH_021",
+              "chapter_title": "Growth Strategies for Business",
+              "chapter_order": 1,
+              "video_url": "material/videos/m4/c1.mp4",
+              "pdf_url": "material/pdf/m4/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_022",
+              "chapter_title": "Scaling Business Operations",
+              "chapter_order": 2,
+              "video_url": "material/videos/m4/c2.mp4",
+              "pdf_url": "material/pdf/m4/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_023",
+              "chapter_title": "Access to Finance & Funding",
+              "chapter_order": 3,
+              "video_url": "material/videos/m4/c3.mp4",
+              "pdf_url": "material/pdf/m4/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_024",
+              "chapter_title": "Sustainability & ESG Principles",
+              "chapter_order": 4,
+              "video_url": "material/videos/m4/c4.mp4",
+              "pdf_url": "material/pdf/m4/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_025",
+              "chapter_title": "Budgeting Fundamentals",
+              "chapter_order": 5,
+              "video_url": "material/videos/m4/c5.mp4",
+              "pdf_url": "material/pdf/m4/c5.pdf",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "module_id": "MOD_005",
+          "module_name": "Marketing & Digital Tools",
+          "module_order": 5,
+          "chapters": [
+            {
+              "chapter_id": "CH_027",
+              "chapter_title": "Marketing Fundamentals",
+              "chapter_order": 1,
+              "video_url": "material/videos/m5/c1.mp4",
+              "pdf_url": "material/pdf/m5/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_028",
+              "chapter_title": "Digital Marketing Overview",
+              "chapter_order": 2,
+              "video_url": "material/videos/m5/c2.mp4",
+              "pdf_url": "material/pdf/m5/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_029",
+              "chapter_title": "Social Media Marketing",
+              "chapter_order": 3,
+              "video_url": "material/videos/m5/c3.mp4",
+              "pdf_url": "material/pdf/m5/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_030",
+              "chapter_title": "Search Engine Optimization (SEO)",
+              "chapter_order": 4,
+              "video_url": "material/videos/m5/c4.mp4",
+              "pdf_url": "material/pdf/m5/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_031",
+              "chapter_title": "Content Marketing Strategy",
+              "chapter_order": 5,
+              "video_url": "material/videos/m5/c5.mp4",
+              "pdf_url": "material/pdf/m5/c5.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_032",
+              "chapter_title": "E-Commerce Basics",
+              "chapter_order": 6,
+              "video_url": "material/videos/m5/c6.mp4",
+              "pdf_url": "material/pdf/m5/c6.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_033",
+              "chapter_title": "Customer Relationship Management",
+              "chapter_order": 7,
+              "video_url": "material/videos/m5/c7.mp4",
+              "pdf_url": "material/pdf/m5/c7.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_034",
+              "chapter_title": "Data Analytics for Business",
+              "chapter_order": 8,
+              "video_url": "material/videos/m5/c8.mp4",
+              "pdf_url": "material/pdf/m5/c8.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_035",
+              "chapter_title": "Building a Digital Brand",
+              "chapter_order": 9,
+              "video_url": "material/videos/m5/c9.mp4",
+              "pdf_url": "material/pdf/m5/c9.pdf",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "module_id": "MOD_006",
+          "module_name": "Business Taxation",
+          "module_order": 6,
+          "chapters": [
+            {
+              "chapter_id": "CH_036",
+              "chapter_title": "Introduction to Business Taxation",
+              "chapter_order": 1,
+              "video_url": "material/videos/m6/c1.mp4",
+              "pdf_url": "material/pdf/m6/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_037",
+              "chapter_title": "Goods & Services Tax (GST)",
+              "chapter_order": 2,
+              "video_url": "material/videos/m6/c2.mp4",
+              "pdf_url": "material/pdf/m6/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_038",
+              "chapter_title": "Income Tax for Businesses",
+              "chapter_order": 3,
+              "video_url": "material/videos/m6/c3.mp4",
+              "pdf_url": "material/pdf/m6/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_039",
+              "chapter_title": "Tax Filing & Compliance",
+              "chapter_order": 4,
+              "video_url": "material/videos/m6/c4.mp4",
+              "pdf_url": "material/pdf/m6/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_040",
+              "chapter_title": "Tax Planning for Entrepreneurs",
+              "chapter_order": 5,
+              "video_url": "material/videos/m6/c5.mp4",
+              "pdf_url": "material/pdf/m6/c5.pdf",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "module_id": "MOD_007",
+          "module_name": "Banking Knowledge",
+          "module_order": 7,
+          "chapters": [
+            {
+              "chapter_id": "CH_041",
+              "chapter_title": "Banking Products & Services",
+              "chapter_order": 1,
+              "video_url": "material/videos/m7/c1.mp4",
+              "pdf_url": "material/pdf/m7/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_042",
+              "chapter_title": "Business Loans & Credit Facilities",
+              "chapter_order": 2,
+              "video_url": "material/videos/m7/c2.mp4",
+              "pdf_url": "material/pdf/m7/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_043",
+              "chapter_title": "MSME Financing Schemes",
+              "chapter_order": 3,
+              "video_url": "material/videos/m7/c3.mp4",
+              "pdf_url": "material/pdf/m7/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_044",
+              "chapter_title": "Digital Banking & UPI Payments",
+              "chapter_order": 4,
+              "video_url": "material/videos/m7/c4.mp4",
+              "pdf_url": "material/pdf/m7/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_045",
+              "chapter_title": "Government Schemes & Subsidies",
+              "chapter_order": 5,
+              "video_url": "material/videos/m7/c5.mp4",
+              "pdf_url": "material/pdf/m7/c5.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_046",
+              "chapter_title": "Business Insurance Essentials",
+              "chapter_order": 6,
+              "video_url": "material/videos/m7/c6.mp4",
+              "pdf_url": "material/pdf/m7/c6.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_047",
+              "chapter_title": "Financial Planning & Management",
+              "chapter_order": 7,
+              "video_url": "material/videos/m7/c7.mp4",
+              "pdf_url": "material/pdf/m7/c7.pdf",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "module_id": "MOD_008",
+          "module_name": "Digital Literacy & E-Commerce",
+          "module_order": 8,
+          "chapters": [
+            {
+              "chapter_id": "CH_048",
+              "chapter_title": "Computer & Internet Basics",
+              "chapter_order": 1,
+              "video_url": "material/videos/m8/c1.mp4",
+              "pdf_url": "material/pdf/m8/c1.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_049",
+              "chapter_title": "Using Digital Tools for Business",
+              "chapter_order": 2,
+              "video_url": "material/videos/m8/c2.mp4",
+              "pdf_url": "material/pdf/m8/c2.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_050",
+              "chapter_title": "E-Commerce Platforms & Marketplaces",
+              "chapter_order": 3,
+              "video_url": "material/videos/m8/c3.mp4",
+              "pdf_url": "material/pdf/m8/c3.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_051",
+              "chapter_title": "Online Payments & Cybersecurity",
+              "chapter_order": 4,
+              "video_url": "material/videos/m8/c4.mp4",
+              "pdf_url": "material/pdf/m8/c4.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_052",
+              "chapter_title": "Building an Online Store",
+              "chapter_order": 5,
+              "video_url": "material/videos/m8/c5.mp4",
+              "pdf_url": "material/pdf/m8/c5.pdf",
+              "status": "active"
+            },
+            {
+              "chapter_id": "CH_053",
+              "chapter_title": "Digital Documentation & Cloud Storage",
+              "chapter_order": 6,
+              "video_url": "material/videos/m8/c6.mp4",
+              "pdf_url": "material/pdf/m8/c6.pdf",
+              "status": "active"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

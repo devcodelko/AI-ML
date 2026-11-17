@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Player</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-icon">CP</div>
+        <div>
+          <h1 class="brand-title">Course Player</h1>
+          <p class="brand-subtitle">Read notes and watch lessons</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button id="backBtn" class="btn btn-light hidden">← Back</button>
+      </div>
+    </header>
+
+    <main class="main-area">
+      <section class="page-head">
+        <h2 id="pageTitle">All Modules</h2>
+        <p id="pageDesc">Select a module to view its chapters.</p>
+      </section>
+
+      <section id="contentArea">
+        <div class="loader">Loading...</div>
+      </section>
+    </main>
+  </div>
+
+  <div id="viewerOverlay" class="viewer-overlay hidden">
+    <div class="viewer-box">
+      <div class="viewer-topbar">
+        <div class="viewer-title-wrap">
+          <h3 id="viewerTitle">Viewer</h3>
+          <p id="viewerSubtitle">Read / Watch only</p>
+        </div>
+        <button id="closeViewerBtn" class="btn btn-danger">✕ Close</button>
+      </div>
+
+      <div id="viewerBody" class="viewer-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
