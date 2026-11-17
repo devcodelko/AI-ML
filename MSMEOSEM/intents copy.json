@@ -1,0 +1,987 @@
+[
+  {
+    "intent": "cmyuva_intro",
+    "patterns": [
+      "What is CMYUVA?",
+      "Tell me about CMYUVA",
+      "Chief Minister's Young Entrepreneur Development Campaign",
+      "CMYUVA campaign details",
+      "सीएमयुवा क्या है?",
+      "मुख्यमंत्री युवा उद्यमी विकास अभियान के बारे में बताएं",
+      "सीएमयुवा योजना की जानकारी"
+    ],
+    "responses": [
+      "The Chief Minister's Young Entrepreneur Development Campaign (CMYUVA) is a visionary government initiative designed to foster a spirit of entrepreneurship among the youth. The program offers comprehensive support including financial assistance, business mentorship, skill development training, and guidance on launching and managing sustainable enterprises. It aims to empower young individuals to become self-reliant, create employment opportunities, and contribute to the economic development of the state. For more information and to apply, visit the official website: <a href='https://msme.up.gov.in/login/registration_login' target='_blank'>CMYUVA Home</a>.",
+      "मुख्यमंत्री युवा उद्यमी विकास अभियान (CMYUVA) युवाओं में उद्यमशीलता की भावना को बढ़ावा देने के लिए शुरू की गई एक सरकारी पहल है। इस कार्यक्रम में वित्तीय सहायता, व्यवसाय में मार्गदर्शन, कौशल विकास प्रशिक्षण और स्थायी उद्यम शुरू करने व संचालित करने का समर्थन शामिल है। इसका उद्देश्य युवाओं को आत्मनिर्भर बनाना, रोजगार के अवसर सृजित करना और राज्य के आर्थिक विकास में योगदान देना है। अधिक जानकारी और आवेदन के लिए आधिकारिक वेबसाइट पर जाएं: <a href='https://msme.up.gov.in/login/registration_login' target='_blank'>CMYUVA होम</a>।"
+    ]
+  },
+  {
+    "intent": "fallback",
+    "patterns": [],
+    "responses": [
+      "Hmm, I'm not sure I got that.",
+      "Can you try asking in a different way?",
+      "I'm still learning! Try a different question.",
+      "हम्म, मुझे यह समझ नहीं आया।",
+      "क्या आप इसे दूसरे तरीके से पूछ सकते हैं?",
+      "मैं अभी सीख रहा हूं! कृपया कोई अन्य प्रश्न पूछें।"
+    ]
+  },
+  {
+    "intent": "swarojgar_intro",
+    "patterns": [
+      "What is Mukhyamantri Yuva Swarojgar Yojana?",
+      "Swarojgar Yojana",
+      "Chief Minister's Self Employment Scheme",
+      "Details of Yuva Swarojgar Yojana",
+      "मुख्यमंत्री युवा स्वरोजगार योजना क्या है?",
+      "स्वरोजगार योजना की जानकारी",
+      "युवा स्वरोजगार योजना के बारे में बताएं"
+    ],
+    "responses": [
+      "The Mukhyamantri Yuva Swarojgar Yojana is a government initiative to support youth in starting self-employment ventures. \n\n- Loans up to ₹25 lakh for manufacturing/industrial businesses. \n- Loans up to ₹10 lakh for service sector ventures. \n- Includes 25% subsidy/margin money support by the state (up to ₹6.25 lakh for industry, ₹2.5 lakh for services). \n\nFor more details and application, visit: <a href='https://msme1connect.up.gov.in/Home/SchemesList/5' target='_blank'>Swarojgar Yojana Page</a>",
+      "मुख्यमंत्री युवा स्वरोजगार योजना युवाओं को स्वरोजगार शुरू करने में सहायता के लिए एक सरकारी पहल है। \n\n- विनिर्माण/औद्योगिक व्यवसायों के लिए ₹25 लाख तक का ऋण। \n- सेवा क्षेत्र के उद्यमों के लिए ₹10 लाख तक का ऋण। \n- राज्य द्वारा 25% सब्सिडी/मार्जिन मनी सहायता शामिल (उद्योग के लिए ₹6.25 लाख तक, सेवाओं के लिए ₹2.5 लाख तक)। \n\nअधिक जानकारी और आवेदन के लिए यहां जाएं: <a href='https://msme1connect.up.gov.in/Home/SchemesList/5' target='_blank'>स्वरोजगार योजना पेज</a>"
+    ]
+  },
+  {
+    "intent": "cmyuva_loan_details",
+    "patterns": [
+      "Loan details of CMYUVA",
+      "How much loan in CMYUVA?",
+      "Loan amount under CMYUVA",
+      "Phases of CMYUVA loan",
+      "CMYUVA loan scheme details",
+      "सीएमयुवा में ऋण की जानकारी",
+      "सीएमयुवा में कितना लोन मिलता है?",
+      "सीएमयुवा ऋण योजना के चरण"
+    ],
+    "responses": [
+      "The Mukhyamantri Yuva Udyami Vikas Abhiyan (CMYUVA) provides loans in two structured phases:\n\n Phase 1: Interest-free, collateral-free loan up to ₹5 lakh for aspiring young entrepreneurs.\n\n Phase 2: On successful repayment, eligibility extends to ₹10–₹20 lakh loans, offered at a 50% interest subsidy for three years.\n\n🔄 Recent updates in some reports mention Phase 2 may allow up to ₹7.5 lakh depending on repayment history.\n\n Summary Table:\nPhase | Loan Amount | Interest Terms\nPhase 1 | Up to ₹5 lakh | Interest-free, collateral-free\nPhase 2 | ₹10–₹20 lakh (or up to ₹7.5 lakh in some updates) | 50% interest subsidized for 3 years\n\nFor official updates, visit: <a href='https://msme1connect.up.gov.in/scheme-list/mukhyamantri-yuva-udyami-vikas-abhiyan' target='blank'>CMYUVA Official Page</a>",
+      "मुख्यमंत्री युवा उद्यमी विकास अभियान (CMYUVA) दो चरणों में ऋण प्रदान करता है:\n\n चरण 1: उभरते युवा उद्यमियों के लिए ब्याज-मुक्त, जमानत-मुक्त ₹5 लाख तक का ऋण।\n\n चरण 2: सफल चुकौती पर, ₹10–₹20 लाख तक के ऋण के लिए पात्रता, जो तीन वर्षों के लिए 50% ब्याज सब्सिडी पर दिए जाते हैं।\n\n🔄 कुछ रिपोर्टों के अनुसार, चुकौती इतिहास के आधार पर चरण 2 में ₹7.5 लाख तक की संभावना है।\n\n सारांश तालिका:\nचरण | ऋण राशि | ब्याज शर्तें\nचरण 1 | ₹5 लाख तक | ब्याज-मुक्त, जमानत-मुक्त\nचरण 2 | ₹10–₹20 लाख (या कुछ अपडेट में ₹7.5 लाख तक) | 3 वर्षों के लिए 50% ब्याज सब्सिडी\n\nआधिकारिक अपडेट के लिए यहां जाएं: <a href='https://msme1connect.up.gov.in/scheme-list/mukhyamantri-yuva-udyami-vikas-abhiyan' target='_blank'>CMYUVA आधिकारिक पेज</a>"
+    ]
+  },
+  {
+    "intent": "Help",
+    "patterns": [
+      "How can You help me",
+      "who are you",
+      "आप मेरी कैसे मदद कर सकते हैं",
+      "तुम कौन हो"
+    ],
+    "responses": [
+      "I am Osem chatbot, Here You can ask about Osme",
+      "मैं Osem चैटबॉट हूं, यहां आप Osme के बारे में पूछ सकते हैं"
+    ]
+  },
+  {
+    "intent": "eligibility_criteria",
+    "patterns": [
+      "Who is eligible for CMYUVA?",
+      "Eligibility for CMYUVA scheme",
+      "CMYUVA age and qualification requirement",
+      "सीएमयुवा के लिए कौन पात्र है?",
+      "सीएमयुवा योजना की पात्रता",
+      "सीएमयुवा की आयु और योग्यता आवश्यकताएं"
+    ],
+    "responses": [
+      "Eligible applicants must be between the ages of 21 and 40 years. The minimum educational qualification required is completion of the 8th grade from a recognized educational board. Additionally, candidates must possess a valid skill-related certificate, diploma, or degree issued by a government-recognized institution or training center, relevant to the proposed business or entrepreneurial activity.",
+      "पात्र आवेदकों की आयु 21 से 40 वर्ष के बीच होनी चाहिए। न्यूनतम शैक्षिक योग्यता मान्यता प्राप्त शिक्षा बोर्ड से 8वीं कक्षा उत्तीर्ण होना आवश्यक है। इसके अलावा, उम्मीदवारों के पास सरकारी मान्यता प्राप्त संस्थान या प्रशिक्षण केंद्र द्वारा जारी एक वैध कौशल-संबंधित प्रमाणपत्र, डिप्लोमा, या डिग्री होनी चाहिए, जो प्रस्तावित व्यवसाय या उद्यमशीलता गतिविधि से relevant हो।"
+    ]
+  },
+  {
+    "intent": "cmyuva_training_program",
+    "patterns": [
+      "What is the CM Yuva Entrepreneurship Training Program?",
+      "Tell me about the CM Yuva training",
+      "CM Yuva training details",
+      "How do I join CM Yuva training?",
+      "CM Yuva program process",
+      "CM Yuva loan eligibility",
+      "What is required for CM Yuva loan?",
+      "Explain CM Yuva Entrepreneurship Program",
+      "CM Yuva online training",
+      "Details about CM Yuva certificate course",
+      "सीएम युवा उद्यमिता प्रशिक्षण कार्यक्रम क्या है?",
+      "सीएम युवा प्रशिक्षण के बारे में बताएं",
+      "सीएम युवा ऑनलाइन प्रशिक्षण की जानकारी",
+      "सीएम युवा प्रमाणपत्र कोर्स कैसे ज्वाइन करें?"
+    ],
+    "responses": [
+      "<strong>CM YUVA Entrepreneurship Training Program</strong> is the first step towards CM YUVA Loan conducted by UPICON (U.P. Industrial Consultancy Limited). Participants must complete a 5-day online training and qualify a 30-minute online assessment. Upon successful completion, they receive a certification that can help them secure a bank loan of up to ₹5 lakhs to start their own business or entrepreneurial venture.",
+      "<strong>सीएम युवा उद्यमिता प्रशिक्षण कार्यक्रम</strong> यूपीआईकॉन (U.P. Industrial Consultancy Limited) द्वारा आयोजित सीएम युवा ऋण की दिशा में पहला कदम है। प्रतिभागियों को 5-दिवसीय ऑनलाइन प्रशिक्षण पूरा करना होगा और 30-मिनट की ऑनलाइन मूल्यांकन परीक्षा उत्तीर्ण करनी होगी। सफल समापन पर, उन्हें एक प्रमाणीकरण मिलता है जो उन्हें अपना स्वयं का व्यवसाय या उद्यमशीलता उद्यम शुरू करने के लिए ₹5 लाख तक का बैंक ऋण सुरक्षित करने में मदद कर सकता है।"
+    ]
+  },
+  {
+    "intent": "cmyuva_udyami_yojana",
+    "patterns": [
+      "What is CM Yuva Udyami Yojana?",
+      "Tell me about Mukhyamantri Yuva Udyami Vikas Abhiyan",
+      "CM Yuva Udyami scheme details",
+      "CM Yuva loan yojana",
+      "Explain CM Yuva Udyami program",
+      "Give me detail about cm yuva",
+      " About cmyuva",
+      "How does CM Yuva Udyami Yojana work?",
+      "Udyami scheme for youth in UP",
+      "What are the benefits of CM Yuva Udyami Yojana?",
+      "सीएम युवा उद्यमी योजना क्या है?",
+      "मुख्यमंत्री युवा उद्यमी विकास अभियान के बारे में बताएं",
+      "सीएम युवा उद्यमी योजना के लाभ",
+      "यूपी में युवाओं के लिए उद्यमी योजना"
+    ],
+    "responses": [
+      "CM YUVA Udyami Yojana, officially called <strong>Mukhyamantri Yuva Udyami Vikas Abhiyan</strong>, is a flagship entrepreneurship scheme launched by the Government of Uttar Pradesh in 2018. It empowers youth by providing <strong>interest-free, collateral-free loans</strong>, training, and incubation support to start or expand businesses.<br><br><strong> Key Features:</strong><ul><li><strong>Target group:</strong> UP residents aged 21–40 years, minimum 8th pass, with a government-recognized skill certificate or training</li><li><strong>Phase 1:</strong> Loans up to ₹5 lakh with 10% margin money subsidy and 4 years of CGTMSE fee covered by the government</li><li><strong>Phase 2:</strong> Loans up to ₹20 lakh with partial subsidy for business expansion</li></ul><br><strong> Government Goals:</strong><ul><li>Create 1 lakh self-employment opportunities annually</li><li>By mid-2025, over 68,000 youth received ₹2,751 crore in loans</li><li>More than 40,000 businesses launched across sectors like solar, bakery, laundry, and services</li></ul><br><strong> Support Services:</strong><ul><li>Mentorship, incubation, and expert workshops</li><li>Supplier connections through <a href='https://upmart.in' target='_blank'>UP Mart</a></li><li>Exposure via CM YUVA Conclaves & Expos</li></ul><br><strong> Eligibility:</strong><ul><li>Age: 21–40 years</li><li>Education: Minimum 8th standard + skill or training certificate</li></ul><br><strong> Documents Needed:</strong><ul><li>Aadhaar, skill/training certificate, project report</li><li>Educational qualification and ID proof</li><li>Bank passbook copy</li></ul><br><strong> How to Apply:</strong> Apply online at:<br>- <a href='https://msme.up.gov.in' target='_blank'>msme.up.gov.in</a><br>- <a href='https://cmyuva.iid.org.in' target='_blank'>cmyuva.iid.org.in</a><br><br><strong> Real-Life Stories:</strong><ul><li><strong>Prabhnoor Kaur (Kanpur):</strong> Launched \"Sweet Sculpt by Kaur\" with ₹4.25 lakh loan</li><li><strong>Yashwant Vishwakarma:</strong> Opened a tattoo studio in Lalitpur</li><li><strong>Aniket Singh (Chitrakoot):</strong> Transitioned from laundry worker to business owner</li></ul><br>This scheme is transforming job seekers into confident job creators across Uttar Pradesh.",
+      "सीएम युवा उद्यमी योजना, जिसे आधिकारिक तौर पर <strong>मुख्यमंत्री युवा उद्यमी विकास अभियान</strong> कहा जाता है, उत्तर प्रदेश सरकार द्वारा 2018 में शुरू की गई एक प्रमुख उद्यमिता योजना है। यह युवाओं को व्यवसाय शुरू करने या विस्तार करने के लिए <strong>ब्याज-मुक्त, जमानत-मुक्त ऋण</strong>, प्रशिक्षण और इनक्यूबेशन सहायता प्रदान करके सशक्त बनाती है।<br><br><strong> मुख्य विशेषताएं:</strong><ul><li><strong>लक्ष्य समूह:</strong> यूपी के 21-40 वर्ष के निवासी, न्यूनतम 8वीं पास, सरकारी मान्यता प्राप्त कौशल प्रमाणपत्र या प्रशिक्षण के साथ</li><li><strong>चरण 1:</strong> ₹5 लाख तक का ऋण with 10% मार्जिन मनी सब्सिडी और 4 वर्षों का CGTMSE शुल्क सरकार द्वारा वहन</li><li><strong>चरण 2:</strong> व्यवसाय विस्तार के लिए आंशिक सब्सिडी के साथ ₹20 लाख तक का ऋण</li></ul><br><strong> सरकारी लक्ष्य:</strong><ul><li>प्रतिवर्ष 1 लाख स्वरोजगार के अवसर सृजित करना</li><li>2025 के मध्य तक, 68,000 से अधिक युवाओं को ₹2,751 करोड़ का ऋण मिला</li><li>सौर, बेकरी, लॉन्ड्री और सेवाओं जैसे क्षेत्रों में 40,000 से अधिक व्यवसाय शुरू हुए</li></ul><br><strong> सहायता सेवाएं:</strong><ul><li>मार्गदर्शन, इनक्यूबेशन, और विशेषज्ञ कार्यशालाएं</li><li><a href='https://upmart.in' target='_blank'>UP Mart</a> के through आपूर्तिकर्ता कनेक्शन</li><li>सीएम युवा सम्मेलन और प्रदर्शनियों के through एक्सपोजर</li></ul><br><strong> पात्रता:</strong><ul><li>आयु: 21-40 वर्ष</li><li>शिक्षा: न्यूनतम 8वीं कक्षा + कौशल या प्रशिक्षण प्रमाणपत्र</li></ul><br><strong> आवश्यक दस्तावेज:</strong><ul><li>आधार, कौशल/प्रशिक्षण प्रमाणपत्र, परियोजना रिपोर्ट</li><li>शैक्षिक योग्यता और पहचान प्रमाण</li><li>बैंक पासबुक की copy</li></ul><br><strong> आवेदन कैसे करें:</strong> ऑनलाइन आवेदन करें:<br>- <a href='https://msme.up.gov.in' target='_blank'>msme.up.gov.in</a><br>- <a href='https://cmyuva.iid.org.in' target='_blank'>cmyuva.iid.org.in</a><br><br><strong> वास्तविक जीवन की कहानियां:</strong><ul><li><strong>प्रभनूर कौर (कानपुर):</strong> ₹4.25 लाख के ऋण के साथ \"Sweet Sculpt by Kaur\" लॉन्च किया</li><li><strong>यशवंत विश्वकर्मा:</strong> ललितपुर में टैटू स्टूडियो खोला</li><li><strong>अनिकेत सिंह (चित्रकूट):</strong> लॉन्ड्री वर्कर से business owner बने</li></ul><br>यह योजना उत्तर प्रदेश भर में नौकरी चाहने वालों को confident नौकरी देने वालों में बदल रही है।"
+    ]
+  },
+  {
+    "intent": "cmyuva_training_details",
+    "patterns": [
+      "What is included in CM Yuva training?",
+      "Give me details of CM Yuva program",
+      "Tell me about the CM Yuva training process",
+      "CM Yuva training steps",
+      "What happens in the 5-day CM Yuva course?",
+      "How long is the CM Yuva training?",
+      "Who is eligible for CM Yuva training?",
+      "Is CM Yuva certificate valid?",
+      "How can I apply for CM Yuva loan?",
+      "What is the benefit of CM Yuva training?",
+      "सीएम युवा प्रशिक्षण में क्या शामिल है?",
+      "सीएम युवा प्रोग्राम की विस्तृत जानकारी",
+      "सीएम युवा प्रशिक्षण प्रक्रिया के बारे में बताएं",
+      "सीएम युवा प्रमाणपत्र वैध है?"
+    ],
+    "responses": [
+      "<strong>The CM YUVA Entrepreneurship Training includes:</strong><br><br>- 5-day online entrepreneurship training<br>- 30 hours of total reading and training content<br>- 30-minute online assessment<br>- Government-recognized certificate upon successful completion<br>- Eligibility to apply for a bank loan of up to ₹5,00,000<br><br>It is ideal for aspiring youth and first-time entrepreneurs in Uttar Pradesh looking to start their own ventures.",
+      "<strong>सीएम युवा उद्यमिता प्रशिक्षण में शामिल है:</strong><br><br>- 5-दिवसीय ऑनलाइन उद्यमिता प्रशिक्षण<br>- कुल 30 घंटे का reading और training content<br>- 30-मिनट की ऑनलाइन मूल्यांकन परीक्षा<br>- सफल समापन पर सरकारी मान्यता प्राप्त प्रमाणपत्र<br>- ₹5,00,000 तक के बैंक ऋण के लिए आवेदन की पात्रता<br><br>यह उत्तर प्रदेश के उभरते युवाओं और first-time उद्यमियों के लिए आदर्श है जो अपना venture शुरू करना चाहते हैं।"
+    ]
+  },
+  {
+    "intent": "cmyuva_registration_login",
+    "patterns": [
+      "How to register for CM Yuva training?",
+      "How to login to CM Yuva course?",
+      "CM Yuva EP course registration steps",
+      "CM Yuva training registration process",
+      "Help me sign up for CM Yuva course",
+      "Where to register for CM Yuva Entrepreneurship Program?",
+      "Guide to join CM Yuva EP course",
+      "CM Yuva course login steps",
+      "Steps to enroll in CM Yuva training",
+      "CM Yuva course portal instructions",
+      "सीएम युवा प्रशिक्षण के लिए कैसे पंजीकरण करें?",
+      "सीएम युवा कोर्स में लॉगिन कैसे करें?",
+      "सीएम युवा ईपी कोर्स पंजीकरण steps",
+      "सीएम युवा प्रशिक्षण में enroll कैसे करें?"
+    ],
+    "responses": [
+      "<strong>Here's a simple, step-by-step guide to help you register, log in, and start your CM YUVA Entrepreneurship course:</strong><br><br>1. Visit <a href='https://www.upicon.in' target='_blank'>upicon.in</a><br>2. Click on <strong>e-Learning</strong><br>3. Select the <strong>CM YUVA EP Course</strong><br>4. If you're a new user, <strong>Register yourself</strong><br>5. After successful registration, <strong>log in</strong> with your credentials<br>6. <strong>Enroll in the course</strong> by making the payment<br>7. The course will be listed on your <strong>dashboard</strong><br>8. Complete the course and pass the <strong>online assessment</strong> to receive your <strong>certificate</strong><br><br>You can now begin learning and work toward your CM YUVA EP Certificate — a key document to help you secure funding and move forward with your business journey!",
+      "<strong>यहां आपके लिए सीएम युवा उद्यमिता कोर्स के लिए पंजीकरण, लॉगिन और start करने के लिए एक सरल, step-by-step guide है:</strong><br><br>1. <a href='https://www.upicon.in' target='_blank'>upicon.in</a> पर जाएं<br>2. <strong>e-Learning</strong> पर क्लिक करें<br>3. <strong>CM YUVA EP Course</strong> का चयन करें<br>4. यदि आप नए user हैं, तो <strong>Register yourself</strong> करें<br>5. सफल पंजीकरण के बाद, अपनी credentials के साथ <strong>log in</strong> करें<br>6. भुगतान करके <strong>Enroll in the course</strong> करें<br>7. कोर्स आपके <strong>dashboard</strong> पर listed होगा<br>8. कोर्स पूरा करें और <strong>online assessment</strong> उत्तीर्ण करके अपना <strong>certificate</strong> प्राप्त करें<br><br>अब आप learning शुरू कर सकते हैं और अपने सीएम युवा ईपी प्रमाणपत्र की दिशा में काम कर सकते हैं — funding सुरक्षित करने और अपने business journey में आगे बढ़ने में मदद करने वाला एक key document!"
+    ]
+  },
+  {
+    "intent": "cmyuva_eligibility",
+    "patterns": [
+      "Who can apply for CM Yuva program?",
+      "CM Yuva eligibility criteria?",
+      "Am I eligible for CM Yuva training?",
+      "Who is allowed to join CM Yuva course?",
+      "Can I apply for CM Yuva if I'm from UP?",
+      "What is the minimum qualification for CM Yuva?",
+      "Is there an age limit for CM Yuva?",
+      "Who is this program meant for?",
+      "CM Yuva course applicant criteria",
+      "सीएम युवा प्रोग्राम के लिए कौन आवेदन कर सकता है?",
+      "सीएम युवा पात्रता मानदंड?",
+      "क्या मैं सीएम युवा प्रशिक्षण के लिए पात्र हूं?",
+      "सीएम युवा के लिए न्यूनतम योग्यता क्या है?"
+    ],
+    "responses": [
+      "<strong>Eligibility for CM YUVA Entrepreneurship Program:</strong><br><br>- <strong>Age:</strong> 21 to 40 years<br>- <strong>Minimum Qualification:</strong> 8th pass or equivalent<br>- <strong>Target Audience:</strong> Aspiring entrepreneurs who want to start their own business through the franchise model<br><br>This initiative is exclusively for the youth of <strong>Uttar Pradesh</strong>, providing them with the necessary resources and financial support to begin their entrepreneurial journey.",
+      "<strong>सीएम युवा उद्यमिता कार्यक्रम के लिए पात्रता:</strong><br><br>- <strong>आयु:</strong> 21 से 40 वर्ष<br>- <strong>न्यूनतम योग्यता:</strong> 8वीं पास या समकक्ष<br>- <strong>लक्ष्य दर्शक:</strong> Aspiring entrepreneurs जो franchise model के through अपना business शुरू करना चाहते हैं<br><br>यह पहल विशेष रूप से <strong>उत्तर प्रदेश</strong> के youth के लिए है, जो उन्हें अपनी entrepreneurial journey शुरू करने के लिए necessary resources और financial support प्रदान करती है।"
+    ]
+  },
+  {
+    "intent": "cmyuva_key_benefits",
+    "patterns": [
+      "What are the benefits of CM Yuva program?",
+      "CM Yuva advantages?",
+      "Why should I join CM Yuva?",
+      "Tell me the key benefits of CM Yuva scheme",
+      "What do I get from CM Yuva training?",
+      "Benefits of applying for CM Yuva course",
+      "How does CM Yuva help entrepreneurs?",
+      "Is CM Yuva helpful for starting a business?",
+      "सीएम युवा प्रोग्राम के क्या लाभ हैं?",
+      "सीएम युवा के फायदे?",
+      "मुझे सीएम युवा क्यों join करना चाहिए?",
+      "सीएम युवा योजना के मुख्य लाभ बताएं"
+    ],
+    "responses": [
+      "<strong>Here are the key benefits of the CM YUVA Entrepreneurship Program:</strong><br><br>- <strong>Financial Freedom:</strong> Get interest-free, collateral-free loans of up to ₹5–10 lakh to start a business by getting a franchise.<br>- <strong>Guided Success:</strong> Connect with 30+ reputed franchise brands and industry experts. Explore thousands of franchise opportunities online.<br>- <strong>Knowledge & Training:</strong> Learn essential business skills including ownership, operations, and strategies for scaling your business.<br><br>This program is designed to empower young entrepreneurs in Uttar Pradesh with everything they need to succeed.",
+      "<strong>यहां सीएम युवा उद्यमिता कार्यक्रम के मुख्य लाभ हैं:</strong><br><br>- <strong>वित्तीय स्वतंत्रता:</strong> franchise लेकर business शुरू करने के लिए ₹5-10 लाख तक के ब्याज-मुक्त, जमानत-मुक्त ऋण प्राप्त करें।<br>- <strong>मार्गदर्शित सफलता:</strong> 30+ प्रतिष्ठित franchise brands और industry experts से connect करें। ऑनलाइन हजारों franchise opportunities explore करें।<br>- <strong>ज्ञान और प्रशिक्षण:</strong> ownership, operations, और अपने business को scale करने की strategies सहित essential business skills सीखें।<br><br>यह कार्यक्रम उत्तर प्रदेश के young entrepreneurs को succeed होने के लिए needed everything के साथ सशक्त बनाने के लिए designed है।"
+    ]
+  },
+  {
+    "intent": "cmyuva_required_documents",
+    "patterns": [
+      "What documents are required for CM Yuva application?",
+      "CM Yuva documents list",
+      "Which documents do I need for CM Yuva?",
+      "Required papers for CM Yuva program",
+      "Documents needed for CM Yuva course",
+      "What should I upload for CM Yuva?",
+      "List of certificates needed for CM Yuva",
+      "What do I need to apply for CM Yuva loan?",
+      "सीएम युवा आवेदन के लिए कौन से दस्तावेज required हैं?",
+      "सीएम युवा दस्तावेजों की सूची",
+      "सीएम युवा ऋण के लिए किन दस्तावेजों की आवश्यकता है?",
+      "सीएम युवा के लिए आवश्यक प्रमाणपत्र"
+    ],
+    "responses": [
+      "<strong>Here is the list of documents required for the CM YUVA Loan:</strong><br><br><strong>Skill Documents:</strong><br>- Skill Certificate<br>- Training Certificate<br>- Computer Training Certificate<br>- ITI Certification<br><br><strong>Project Documents:</strong><br>- Project Report<br>- GST Registration (Optional)<br>- Udyam Registration (Optional)<br><br><strong>Personal Documents:</strong><br>- PAN Card<br>- Residency Certificate (Issued by Ward Member/Gram Pradhan)<br>- Bank Account Details (First page of passbook showing banking history)<br>- Notarized Affidavit<br>- Educational Qualification Certificate<br>- Age Proof<br>- Signature<br>- Recent Photograph<br><br>Make sure your documents are clear and valid before submitting your application.",
+      "<strong>यहां सीएम युवा ऋण के लिए आवश्यक दस्तावेजों की सूची है:</strong><br><br><strong>कौशल दस्तावेज:</strong><br>- कौशल प्रमाणपत्र<br>- प्रशिक्षण प्रमाणपत्र<br>- कंप्यूटर प्रशिक्षण प्रमाणपत्र<br>- आईटीआई प्रमाणन<br><br><strong>परियोजना दस्तावेज:</strong><br>- परियोजना रिपोर्ट<br>- जीएसटी पंजीकरण (वैकल्पिक)<br>- उद्यम पंजीकरण (वैकल्पिक)<br><br><strong>व्यक्तिगत दस्तावेज:</strong><br>- पैन कार्ड<br>- निवास प्रमाण पत्र (वार्ड सदस्य/ग्राम प्रधान द्वारा जारी)<br>- बैंक खाता विवरण (बैंकिंग इतिहास दिखाने वाला पासबुक का पहला पृष्ठ)<br>- नोटरीकृत शपथ पत्र<br>- शैक्षिक योग्यता प्रमाणपत्र<br>- आयु प्रमाण<br>- हस्ताक्षर<br>- recent photograph<br><br>अपना आवेदन submit करने से पहले सुनिश्चित करें कि आपके दस्तावेज clear और valid हैं।"
+    ]
+  },
+  {
+    "intent": "key_points",
+    "patterns": [
+      "Key features of CMYUVA",
+      "Important points of CMYUVA scheme",
+      "Highlights of the scheme",
+      "सीएमयुवा की मुख्य विशेषताएं",
+      "सीएमयुवा योजना के महत्वपूर्ण बिंदु",
+      "योजना की मुख्य बातें"
+    ],
+    "responses": [
+      "The scheme aims to create self-employment opportunities for up to 1 lakh youth every year, empowering them to start their own ventures and become financially independent. Under this initiative, eligible candidates can avail of interest-free and collateral-free loans of up to ₹5 lakh to support their business plans. Additionally, a 10% margin money subsidy is provided on the total project cost, further reducing the financial burden on young entrepreneurs.",
+      "यह योजना प्रतिवर्ष 1 लाख युवाओं के लिए स्वरोजगार के अवसर सृजित करने का लक्ष्य रखती है, जिससे उन्हें अपना venture शुरू करने और आर्थिक रूप से स्वतंत्र बनने में सशक्त बनाया जा सके। इस पहल के तहत, पात्र उम्मीदवार अपनी business plans का समर्थन करने के लिए ₹5 लाख तक के ब्याज-मुक्त और जमानत-मुक्त ऋण का लाभ उठा सकते हैं। इसके अतिरिक्त, total project cost पर 10% margin money subsidy प्रदान की जाती है, जो young entrepreneurs पर financial burden को और कम करती है।"
+    ]
+  },
+  {
+    "intent": "key_aspects",
+    "patterns": [
+      "Key aspects of CMYUVA?",
+      "Explain the focus and benefits of CMYUVA",
+      "CMYUVA scheme?",
+      "सीएमयुवा के मुख्य पहलू?",
+      "सीएमयुवा के focus और benefits समझाएं",
+      "सीएमयुवा योजना क्या है?"
+    ],
+    "responses": [
+      "Targeted at youth between the ages of 18 and 40, this initiative offers comprehensive support including financial assistance, entrepreneurship training, and access to interest-free loans. The scheme focuses on key sectors such as manufacturing, services, and other promising industries to encourage diverse entrepreneurial ventures. Its primary goals are to promote economic empowerment, ensure equal opportunities for all, and foster a strong culture of innovation and self-employment among young individuals.",
+      "18 से 40 वर्ष की आयु के youth को लक्षित करने वाली इस पहल में financial assistance, entrepreneurship training, और ब्याज-मुक्त ऋणों तक पहुंच सहित comprehensive support शामिल है। यह योजना manufacturing, services, और other promising industries जैसे key sectors पर focus करती है ताकि diverse entrepreneurial ventures को encourage किया जा सके। इसके primary goals economic empowerment को promote करना, सभी के लिए equal opportunities सुनिश्चित करना, और young individuals में innovation और self-employment की strong culture foster करना है।"
+    ]
+  },
+  {
+    "intent": "odop",
+    "patterns": [
+      "odop",
+      "odap",
+      "odp",
+      "One District One Product",
+      "Tell me about ODOP",
+      "What is ODOP?",
+      "ओडीओपी",
+      "वन डिस्ट्रिक्ट वन प्रोडक्ट",
+      "ओडीओपी के बारे में बताएं",
+      "ओडीओपी क्या है?"
+    ],
+    "responses": [
+      "The One District One Product (ODOP) initiative is a flagship program aimed at promoting one unique, traditionally significant product from each district across the country. This visionary effort is designed to strengthen local economies by encouraging the growth of indigenous industries. ODOP provides vital support in areas such as skill development, quality enhancement, branding, packaging, and market linkages. By fostering job creation, boosting exports, and preserving the rich cultural and artisanal heritage of each region, the program plays a pivotal role in inclusive economic development. To learn more and explore district-specific products, visit the official portal: <a href='https://odopup.in/en' target='_blank'>ODOP Portal</a>.",
+      "वन डिस्ट्रिक्ट वन प्रोडक्ट (ODOP) पहल देश भर के प्रत्येक जिले से एक unique, traditionally significant product को promote करने के लिए शुरू किया गया एक flagship program है। यह visionary effort indigenous industries के growth को encourage करके local economies को strengthen करने के लिए designed है। ODOP skill development, quality enhancement, branding, packaging, और market linkages जैसे क्षेत्रों में vital support प्रदान करता है। job creation को foster करके, exports को boost करके, और प्रत्येक क्षेत्र की rich cultural and artisanal heritage को preserve करके, यह program inclusive economic development में pivotal role निभाता है। अधिक जानने और जिला-विशिष्ट products explore करने के लिए official portal पर जाएं: <a href='https://odopup.in/en' target='_blank'>ODOP पोर्टल</a>।"
+    ]
+  },
+  {
+    "intent": "vssy",
+    "patterns": [
+      "vssy",
+      "Vishwakarma scheme",
+      "Tell me about VSSY",
+      "What is VSSY?",
+      "वीएसएसवाई",
+      "विश्वकर्मा योजना",
+      "वीएसएसवाई के बारे में बताएं",
+      "वीएसएसवाई क्या है?"
+    ],
+    "responses": [
+      "The Vishesh Shilpi Samman Yojana (VSSY) is a government initiative dedicated to supporting traditional artisans such as carpenters, tailors, barbers, blacksmiths, potters, cobblers, and other skilled workers. The scheme provides financial assistance along with specialized training programs to enhance their craftsmanship, upgrade their tools and techniques, and improve their overall livelihood. By empowering local artisans, VSSY aims to preserve traditional skills, promote self-reliance, and boost rural employment. For detailed information and application procedures, visit the official portal: <a href='https://upid.ac.in/vishwakarma-shram-samman-yojana-vssy/' target='_blank'>VSSY Portal</a>.",
+      "विशेष शिल्पी सम्मान योजना (VSSY) बढ़ई, दर्जी, नाई, लोहार, कुम्हार, मोची और अन्य skilled workers जैसे traditional artisans का समर्थन करने के लिए समर्पित एक सरकारी पहल है। यह योजना उनकी craftsmanship को enhance करने, उनके tools और techniques को upgrade करने, और उनकी overall livelihood को improve करने के लिए specialized training programs के साथ financial assistance प्रदान करती है। local artisans को सशक्त बनाकर, VSSY का उद्देश्य traditional skills को preserve करना, self-reliance को promote करना, और rural employment को boost करना है। detailed information और application procedures के लिए official portal पर जाएं: <a href='https://upid.ac.in/vishwakarma-shram-samman-yojana-vssy/' target='_blank'>VSSY पोर्टल</a>।"
+    ]
+  },
+  {
+    "intent": "cm_yuva",
+    "patterns": [
+      "chief minister yuva scheme",
+      "What is CM YUVA?",
+      "YUVA scheme",
+      "मुख्यमंत्री युवा योजना",
+      "सीएम युवा क्या है?",
+      "युवा योजना"
+    ],
+    "responses": [
+      "CM Yuva is a flagship youth empowerment initiative launched by the Government of Uttar Pradesh, aimed at nurturing the potential of young individuals through a holistic approach. The program offers skill development opportunities, comprehensive entrepreneurship training, and financial assistance to help youth launch and grow their own ventures. With a strong focus on education, employment generation, and innovation, CM Yuva aspires to create a self-reliant and future-ready generation, contributing actively to the socio-economic growth of the state.",
+      "सीएम युवा उत्तर प्रदेश सरकार द्वारा शुरू की गई एक flagship youth empowerment पहल है, जिसका उद्देश्य young individuals की potential को holistic approach के through nurture करना है। यह कार्यक्रम youth को अपना venture launch और grow करने में मदद करने के लिए skill development opportunities, comprehensive entrepreneurship training, और financial assistance प्रदान करता है। education, employment generation, और innovation पर strong focus के साथ, सीएम युवा एक self-reliant और future-ready generation create करने की आकांक्षा रखता है, जो state के socio-economic growth में actively contribute करे।"
+    ]
+  },
+  {
+    "intent": "agri_loan",
+    "patterns": [
+      "agri loan",
+      "agriculture loan",
+      "loan for farmers",
+      "What is agri loan?",
+      "कृषि ऋण",
+      "किसानों के लिए ऋण",
+      "एग्री लोन क्या है?"
+    ],
+    "responses": [
+      "Agriloan refers to a range of financial products and credit facilities provided by banks and financial institutions to support agricultural and allied activities. These loan offerings are designed to meet the diverse needs of farmers and include Crop Loans for seasonal farming expenses, Kisan Credit Cards (KCC) for flexible and easy access to credit, Term Loans for purchasing equipment or developing infrastructure, Allied Activity Loans for activities like dairy, poultry, and fisheries, and Agri Gold Loans against pledged gold to fund urgent agricultural requirements. These loans play a crucial role in enhancing productivity, ensuring financial stability, and empowering the farming community.",
+      "कृषि ऋण banks और financial institutions द्वारा agricultural and allied activities का समर्थन करने के लिए provided financial products और credit facilities की एक range को refers करता है। ये loan offerings farmers की diverse needs को meet करने के लिए designed हैं और इनमें seasonal farming expenses के लिए Crop Loans, credit तक flexible और easy access के लिए Kisan Credit Cards (KCC), equipment खरीदने या infrastructure विकसित करने के लिए Term Loans, dairy, poultry, और fisheries जैसी activities के लिए Allied Activity Loans, और urgent agricultural requirements को fund करने के लिए pledged gold के against Agri Gold Loans शामिल हैं। ये loans productivity को enhance करने, financial stability सुनिश्चित करने, और farming community को सशक्त बनाने में crucial role निभाते हैं।"
+    ]
+  },
+  {
+    "intent": "msme1connect",
+    "patterns": [
+      "msme1connect",
+      "MSME portal",
+      "MSME connect",
+      "Where is MSME1Connect link?",
+      "एमएसएमई1कनेक्ट",
+      "एमएसएमई पोर्टल",
+      "एमएसएमई1कनेक्ट लिंक कहां है?"
+    ],
+    "responses": [
+      "UP MSME 1-Connect is a comprehensive digital platform developed under the RAMP (Raising and Accelerating MSME Performance) program, designed to support Micro, Small, and Medium Enterprises (MSMEs) in Uttar Pradesh. This one-stop portal provides streamlined access to a wide range of government schemes, financial assistance, skill development and training opportunities, and export facilitation services. By integrating essential resources and support systems, MSME 1-Connect empowers entrepreneurs to grow their businesses, improve competitiveness, and expand into global markets. To explore the platform and its offerings, visit: <a href='https://msme1connect.up.gov.in/' target='_blank'>MSME1Connect Portal</a>.",
+      "यूपी एमएसएमई 1-कनेक्ट RAMP (Raising and Accelerating MSME Performance) program के under developed एक comprehensive digital platform है, जो उत्तर प्रदेश में सूक्ष्म, लघु और मध्यम enterprises (MSMEs) का समर्थन करने के लिए designed है। यह one-stop portal government schemes, financial assistance, skill development और training opportunities, और export facilitation services की wide range तक streamlined access प्रदान करता है। essential resources और support systems को integrating करके, MSME 1-Connect entrepreneurs को अपने businesses grow करने, competitiveness improve करने, और global markets में expand करने के लिए सशक्त बनाता है। platform और इसके offerings explore करने के लिए, यहां जाएं: <a href='https://msme1connect.up.gov.in/' target='_blank'>MSME1Connect पोर्टल</a>।"
+    ]
+  },
+  {
+    "intent": "udyam",
+    "patterns": [
+      "udyam",
+      "udyam registration",
+      "register on udyam",
+      "udyam link",
+      "उद्यम",
+      "उद्यम पंजीकरण",
+      "उद्यम पर पंजीकरण कैसे करें?",
+      "उद्यम लिंक"
+    ],
+    "responses": [
+      "Udyam Registration is a government-operated online platform introduced for the simplified and hassle-free registration of Micro, Small, and Medium Enterprises (MSMEs) in India. It has replaced the earlier systems such as EM-II (Entrepreneurs Memorandum) and UAM (Udyog Aadhaar Memorandum), offering a more transparent, paperless, and efficient registration process. Udyam Registration helps MSMEs avail various benefits including priority sector lending, subsidies, and access to government schemes and incentives. To register your business and learn more, visit: <a href='https://udyamregistration.gov.in/' target='_blank'>Udyam Registration Portal</a>.",
+      "उद्यम पंजीकरण भारत में सूक्ष्म, लघु और मध्यम enterprises (MSMEs) के simplified और hassle-free पंजीकरण के लिए introduced एक government-operated online platform है। इसने EM-II (Entrepreneurs Memorandum) और UAM (Udyog Aadhaar Memorandum) जैसी earlier systems को replace किया है, जो एक more transparent, paperless, और efficient registration process offer करता है। उद्यम पंजीकरण MSMEs को priority sector lending, subsidies, और government schemes और incentives तक access सहित various benefits avail करने में helps करता है। अपने business को register करने और अधिक जानने के लिए, यहां जाएं: <a href='https://udyamregistration.gov.in/' target='_blank'>उद्यम पंजीकरण पोर्टल</a>।"
+    ]
+  },
+  {
+    "intent": "msme",
+    "patterns": [
+      "msme",
+      "What is MSME?",
+      "MSME website",
+      "About MSME",
+      "how to visit msme",
+      "Tell me about MSME",
+      "Explain MSME",
+      "What does MSME mean?",
+      "Give me details about MSME",
+      "एमएसएमई",
+      "एमएसएमई क्या है?",
+      "एमएसएमई वेबसाइट",
+      "एमएसएमई के बारे में बताएं"
+    ],
+    "responses": [
+      "MSMEs, or Micro, Small, and Medium Enterprises, are classified based on their investment in plant and machinery or equipment and their annual turnover. These enterprises form the backbone of India’s economy by contributing significantly to employment generation, innovation, exports, and inclusive growth. MSMEs operate across various sectors, including manufacturing, services, and trade, playing a crucial role in the nation's socio-economic development. To explore policies, schemes, and support services for MSMEs, visit the official portal: <a href='https://msme.gov.in/' target='_blank'>MSME Government Website</a>.",
+      "एमएसएमई, या सूक्ष्म, लघु और मध्यम enterprises, plant and machinery या equipment में उनके investment और उनके annual turnover के आधार पर classified हैं। ये enterprises employment generation, innovation, exports, और inclusive growth में significantly contribute करके India’s economy की backbone बनाते हैं। एमएसएमई manufacturing, services, और trade सहित various sectors में operate करते हैं, जो nation's socio-economic development में crucial role निभाते हैं। एमएसएमई के लिए policies, schemes, और support services explore करने के लिए, official portal पर जाएं: <a href='https://msme.gov.in/' target='_blank'>एमएसएमई Government Website</a>।"
+    ]
+  },
+  {
+    "intent": "upsdc",
+    "patterns": [
+      "upsdc",
+      "upsdc registration",
+      "register on upsdc",
+      "upsdc link",
+      "यूपीएसडीसी",
+      "यूपीएसडीसी पंजीकरण",
+      "यूपीएसडीसी पर पंजीकरण कैसे करें?",
+      "यूपीएसडीसी लिंक"
+    ],
+    "responses": [
+      "UPDESCO (Uttar Pradesh Development Systems Corporation Limited) is a government-run IT services and consultancy agency operating under the Government of Uttar Pradesh. It plays a key role in implementing e-governance projects and providing digital infrastructure and solutions to various departments and businesses. Entrepreneurs and service providers can register their businesses through the official portal to participate in government initiatives and projects. To begin the registration process, visit: <a href='https://diupmsme.upsdc.gov.in/login/Registration_Login' target='_blank'>UPSDC Portal</a>.",
+      "यूपीडीएससीओ (Uttar Pradesh Development Systems Corporation Limited) उत्तर प्रदेश सरकार के under operate करने वाली एक government-run IT services और consultancy agency है। यह e-governance projects implement करने और various departments और businesses को digital infrastructure और solutions provide करने में key role निभाती है। Entrepreneurs और service providers government initiatives और projects में participate करने के लिए official portal के through अपने businesses register कर सकते हैं। registration process start करने के लिए, यहां जाएं: <a href='https://diupmsme.upsdc.gov.in/login/Registration_Login' target='_blank'>यूपीएसडीसी पोर्टल</a>।"
+    ]
+  },
+  {
+    "intent": "greeting",
+    "patterns": [
+      "Hello",
+      "Hi",
+      "Hey",
+      "Namaste",
+      "Good morning",
+      "नमस्ते",
+      "हैलो",
+      "नमस्कार",
+      "शुभ प्रभात"
+    ],
+    "responses": [
+      "Hello! Welcome to the OSEM chatbot. How can I help you today?",
+      "नमस्ते! OSEM चैटबॉट में आपका स्वागत है। आज मैं आपकी कैसे मदद कर सकता हूं?"
+    ]
+  },
+  {
+    "intent": "about_mission_shakti",
+    "patterns": [
+      "What is Mission Shakti?",
+      "Tell me about Mission Shakti",
+      "Mission Shakti details",
+      "मिशन शक्ति क्या है?",
+      "मिशन शक्ति के बारे में बताएं",
+      "मिशन शक्ति की जानकारी"
+    ],
+    "responses": [
+      "Mission Shakti is a flagship women’s empowerment initiative launched by the Government of Uttar Pradesh, aimed at ensuring the safety, dignity, and self-reliance of women across the state. The mission is structured around two key components: ‘Sambal’—which focuses on safety, protection, and legal support through helplines, women's help desks, and shelter homes; and ‘Samarthya’—which emphasizes development through skill training, education, employment generation, and financial inclusion programs. Together, these components work to create a secure and empowering environment for women to thrive socially and economically.",
+      "मिशन शक्ति उत्तर प्रदेश सरकार द्वारा शुरू की गई एक flagship women’s empowerment पहल है, जिसका उद्देश्य state भर में women की safety, dignity, और self-reliance सुनिश्चित करना है। यह mission two key components के around structured है: 'संबल'—जो helplines, women's help desks, और shelter homes के through safety, protection, और legal support पर focus करता है; और 'समर्थ्य'—जो skill training, education, employment generation, और financial inclusion programs के through development पर emphasizes करता है। एक साथ, ये components socially और economically thrive करने के लिए women के लिए एक secure और empowering environment create करने के लिए work करते हैं।"
+    ]
+  },
+  {
+    "intent": "phases",
+    "patterns": [
+      "What are the phases of Mission Shakti?",
+      "Explain the phases of Mission Shakti",
+      "मिशन शक्ति के चरण क्या हैं?",
+      "मिशन शक्ति के phases समझाएं"
+    ],
+    "responses": [
+      "Mission Shakti is being implemented in structured phases, each strategically focused on ensuring the protection, empowerment, and grassroots-level outreach for women. The phased approach enables targeted interventions—ranging from strengthening safety mechanisms and legal support to promoting education, skill development, financial independence, and leadership opportunities for women at the community level. This comprehensive model aims to create a sustainable and inclusive ecosystem for women’s holistic development across the state.",
+      "मिशन शक्ति structured phases में implemented किया जा रहा है, जिनमें से प्रत्येक strategically women के लिए protection, empowerment, और grassroots-level outreach सुनिश्चित करने पर focused है। phased approach targeted interventions enable करती है—safety mechanisms और legal support को strengthen करने से लेकर community level पर women के लिए education, skill development, financial independence, और leadership opportunities promote करने तक। यह comprehensive model state भर में women’s holistic development के लिए एक sustainable और inclusive ecosystem create करने का aims करता है।"
+    ]
+  },
+  {
+    "intent": "self_help_groups",
+    "patterns": [
+      "Tell me about Self Help Groups",
+      "How do women benefit from SHGs?",
+      "What is the role of SHGs?",
+      "स्वयं सहायता समूहों के बारे में बताएं",
+      "महिलाएं एसएचजी से कैसे लाभान्वित होती हैं?",
+      "एसएचजी की भूमिका क्या है?"
+    ],
+    "responses": [
+      "Self-Help Groups (SHGs) play a vital role in the Mission Shakti initiative by empowering women at the grassroots level through collective entrepreneurship, financial inclusion, and capacity-building. These groups enable women to access credit facilities, start or expand income-generating activities, and participate in various skill development and training programs. By fostering self-reliance, leadership, and economic independence, SHGs contribute significantly to the social and economic upliftment of women across communities.",
+      "स्वयं सहायता समूह (एसएचजी) Mission Shakti पहल में collective entrepreneurship, financial inclusion, और capacity-building के through grassroots level पर women को सशक्त बनाकर एक vital role निभाते हैं। ये groups women को credit facilities access करने, income-generating activities start या expand करने, और various skill development और training programs में participate करने enable करते हैं। self-reliance, leadership, और economic independence foster करके, एसएचजी communities भर में women के social और economic upliftment में significantly contribute करते हैं।"
+    ]
+  },
+  {
+    "intent": "training_programs",
+    "patterns": [
+      "Are there any training programs?",
+      "How can women get training?",
+      "Training under Mission Shakti",
+      "क्या कोई training programs हैं?",
+      "महिलाएं training कैसे प्राप्त कर सकती हैं?",
+      "मिशन शक्ति के under training"
+    ],
+    "responses": [
+      "Mission Shakti offers a comprehensive range of programs aimed at enhancing women's capabilities and confidence. These include vocational training to develop employable skills, digital literacy initiatives to bridge the technology gap, and self-defense workshops to ensure personal safety and preparedness. Through these efforts, the initiative empowers women to become self-reliant, digitally aware, and equipped to face real-world challenges with confidence.",
+      "मिशन शक्ति women's capabilities और confidence enhance करने के aimed programs की एक comprehensive range offer करता है। इनमें employable skills develop करने के लिए vocational training, technology gap bridge करने के लिए digital literacy initiatives, और personal safety और preparedness सुनिश्चित करने के लिए self-defense workshops शामिल हैं। इन efforts के through, यह पहल women को self-reliant, digitally aware, और real-world challenges का confident होकर सामना करने के लिए equipped बनाती है।"
+    ]
+  },
+  {
+    "intent": "goodbye",
+    "patterns": [
+      "Bye",
+      "Goodbye",
+      "Thanks",
+      "Thank you",
+      "अलविदा",
+      "शुक्रिया",
+      "धन्यवाद"
+    ],
+    "responses": [
+      "Thank you for using the chatbot. Stay safe and empowered!",
+      "चैटबॉट का उपयोग करने के लिए धन्यवाद। सुरक्षित और सशक्त रहें!"
+    ]
+  },
+  {
+    "intent": "business_value_delivery",
+    "patterns": [
+      "How do you help businesses?",
+      "How can you help businesses?",
+      "What value do you provide?",
+      "How can you support business growth?",
+      "What services do you offer at each stage of a business?",
+      "आप businesses की कैसे मदद करते हैं?",
+      "आप क्या value provide करते हैं?",
+      "business growth का support कैसे कर सकते हैं?"
+    ],
+    "responses": [
+      "We deliver value to your business at every stage, from inception to growth. Our services are designed to support your business through every phase startup, operations, and expansion",
+      "हम inception से growth तक हर stage पर आपके business को value deliver करते हैं। हमारी services आपके business को हर phase startup, operations, और expansion के through support करने के लिए designed हैं"
+    ]
+  },
+  {
+    "intent": "about_msme_osem",
+    "patterns": [
+      "What is MSME OSEM?",
+      "Tell me about MSME OSEM",
+      "How does MSME OSEM help small businesses?",
+      "What does MSME OSEM do?",
+      "एमएसएमई OSEM क्या है?",
+      "एमएसएमई OSEM के बारे में बताएं",
+      "एमएसएमई OSEM small businesses की कैसे मदद करता है?"
+    ],
+    "responses": [
+      "At MSME OSEM, we are committed to simplifying and streamlining small business management to make entrepreneurship seamless, efficient, and stress-free. Our integrated platform supports entrepreneurs at every stage of their journey—whether you're starting a new venture, managing day-to-day operations, or scaling for growth. With user-friendly tools, expert guidance, and access to essential resources, MSME OSEM empowers business owners to focus on innovation and success. To learn more and explore our services, visit: <a href='https://msmeosem.in/' target='_blank'>MSME OSEM Website</a>.",
+      "एमएसएमई OSEM पर, हम entrepreneurship को seamless, efficient, और stress-free बनाने के लिए small business management को simplifying और streamlining करने के लिए committed हैं। हमारा integrated platform entrepreneurs को उनकी journey के हर stage पर support करता है—चाहे आप एक new venture start कर रहे हों, day-to-day operations manage कर रहे हों, या growth के लिए scaling कर रहे हों। user-friendly tools, expert guidance, और essential resources तक access के साथ, एमएसएमई OSEM business owners को innovation और success पर focus करने के लिए empowers करता है। अधिक जानने और हमारी services explore करने के लिए, यहां जाएं: <a href='https://msmeosem.in/' target='_blank'>एमएसएमई OSEM Website</a>।"
+    ]
+  },
+  {
+    "intent": "entrepreneurial_support",
+    "patterns": [
+      "How do you support entrepreneurs?",
+      "Do you help with launching a business?",
+      "Can you help with scaling my business?",
+      "What help do you offer to entrepreneurs?",
+      "आप entrepreneurs का support कैसे करते हैं?",
+      "क्या आप business launch करने में मदद करते हैं?",
+      "क्या आप मेरे business को scale करने में मदद कर सकते हैं?"
+    ],
+    "responses": [
+      "With a combination of expert guidance, cutting-edge technology, and intuitive, user-friendly tools, we empower business owners to focus on what truly matters—building successful, scalable, and sustainable enterprises. Whether you are just starting out, managing daily operations, or looking to expand your business, our platform offers end-to-end support tailored to your specific needs, making every step of your entrepreneurial journey easier and more efficient.",
+      "expert guidance, cutting-edge technology, और intuitive, user-friendly tools के combination के साथ, हम business owners को what truly matters—successful, scalable, और sustainable enterprises building—पर focus करने के लिए empower करते हैं। चाहे आप अभी start out कर रहे हों, daily operations manage कर रहे हों, या अपने business को expand करना चाह रहे हों, हमारा platform आपकी specific needs के लिए tailored end-to-end support offer करता है, जो आपकी entrepreneurial journey के every step को easier और more efficient बनाता है।"
+    ]
+  },
+  {
+    "intent": "platform_features",
+    "patterns": [
+      "What features does your platform offer?",
+      "How can your platform help me?",
+      "What tools do you provide?",
+      "Do you offer technology or tools for business management?",
+      "आपका platform क्या features offer करता है?",
+      "आपका platform मेरी कैसे मदद कर सकता है?",
+      "क्या आप business management के लिए technology या tools offer करते हैं?"
+    ],
+    "responses": [
+      "Our platform offers a comprehensive suite of tools and resources designed to support every aspect of your business journey. From financial management and marketing assistance to operational support and strategic growth planning, we provide all-in-one, integrated solutions tailored to meet the evolving needs of modern entrepreneurs. With our platform, you gain the confidence and capability to thrive in today’s dynamic and competitive business landscape.",
+      "हमारा platform tools और resources की एक comprehensive suite offer करता है जो आपके business journey के every aspect का support करने के लिए designed है। financial management और marketing assistance से लेकर operational support और strategic growth planning तक, हम modern entrepreneurs की evolving needs को meet करने के लिए tailored all-in-one, integrated solutions provide करते हैं। हमारे platform के साथ, आप today’s dynamic और competitive business landscape में thrive करने के लिए confidence और capability gain करते हैं।"
+    ]
+  },
+  {
+    "intent": "for_appointment",
+    "patterns": [
+      "how can I meet my expert?",
+      "book appointment",
+      "I want to schedule a meeting with an expert",
+      "how to contact MSME OSEM expert",
+      "for expert registration",
+      "how can we reach MSME OSEM expert",
+      "expert booking process",
+      "connect with an expert",
+      "get expert help",
+      "मैं अपने expert से कैसे मिल सकता हूं?",
+      "appointment book करें",
+      "एमएसएमई OSEM expert से कैसे संपर्क करें?",
+      "expert registration के लिए"
+    ],
+    "responses": [
+      "You can connect with our expert panel by visiting the official MSME OSEM Expert Panel page: <a href='https://msmeosem.in/expert-panel#our-experts' target='_blank'>Expert Panel</a>. There, you'll find detailed profiles of industry professionals along with options to get in touch or schedule appointments. Whether you're looking to book a consultation or register yourself as an expert, the Expert Panel section provides everything you need to engage, collaborate, and contribute to the MSME ecosystem.",
+      "आप official एमएसएमई OSEM Expert Panel page: <a href='https://msmeosem.in/expert-panel#our-experts' target='_blank'>Expert Panel</a> पर जाकर हमारे expert panel से connect कर सकते हैं। वहां, आपको industry professionals के detailed profiles मिलेंगे, साथ ही get in touch या appointments schedule करने के options मिलेंगे। चाहे आप consultation book करना चाहते हों या खुद को expert के रूप में register करना चाहते हों, Expert Panel section एमएसएमई ecosystem में engage, collaborate, और contribute करने के लिए needed everything provide करता है।"
+    ]
+  },
+  {
+    "intent": "msme_events",
+    "patterns": [
+      "tell me about MSME OSEM workshop",
+      "any upcoming msme event?",
+      "how to attend msmeosem workshop?",
+      "latest msmeosem events",
+      "msme seminar details",
+      "workshop by msmeosem",
+      "where can I find msme events?",
+      "msmeosem event schedule",
+      "how can I join msme workshop?",
+      "एमएसएमई OSEM workshop के बारे में बताएं",
+      "कोई upcoming एमएसएमई event?",
+      "एमएसएमईओएसईएम workshop में कैसे attend करें?",
+      "एमएसएमई events कहां मिल सकते हैं?"
+    ],
+    "responses": [
+      "Stay informed about all upcoming MSME OSEM workshops, seminars, training sessions, and other events by visiting our official Events page: <a href='https://msmeosem.in/events' target='_blank'>MSME OSEM Events</a>. Here, you’ll find the latest updates on activities designed to support and engage the MSME community. Don’t miss out—check back regularly to view schedules, register for sessions, and participate in valuable learning and networking opportunities.",
+      "हमारे official Events page: <a href='https://msmeosem.in/events' target='_blank'>एमएसएमई OSEM Events</a> पर जाकर सभी upcoming एमएसएमई OSEM workshops, seminars, training sessions, और other events के बारे में informed रहें। यहां, आपको एमएसएमई community का support और engage करने के लिए designed activities के latest updates मिलेंगे। miss out न करें—schedules view करने, sessions के लिए register करने, और valuable learning और networking opportunities में participate करने के लिए regularly check back करें।"
+    ]
+  },
+  {
+    "intent": "user_registration",
+    "patterns": [
+      "how to register on MSME OSEM?",
+      "user registration process",
+      "create an account on OSEM",
+      "sign up for MSME OSEM",
+      "register as a user",
+      "एमएसएमई OSEM पर कैसे register करें?",
+      "user registration process",
+      "OSEM पर account कैसे बनाएं?",
+      "user के रूप में register करें"
+    ],
+    "responses": [
+      "To get started with MSME OSEM and access a wide range of resources, tools, and support services for your business, please register as a user by visiting our official User Registration page: <a href='https://msmeosem.in/user-registration' target='_blank'>User Registration</a>. Once registered, you’ll unlock features tailored to help you launch, manage, and grow your enterprise more effectively in today’s competitive market.",
+      "एमएसएमई OSEM के साथ started होने और अपने business के लिए resources, tools, और support services की wide range access करने के लिए, कृपया हमारे official User Registration page: <a href='https://msmeosem.in/user-registration' target='_blank'>User Registration</a> पर जाकर user के रूप में register करें। एक बार registered होने पर, आप today’s competitive market में अपने enterprise को more effectively launch, manage, और grow करने में मदद करने के लिए tailored features unlock करेंगे।"
+    ]
+  },
+  {
+    "intent": "contact_information",
+    "patterns": [
+      "how to contact MSME OSEM?",
+      "MSME OSEM phone number",
+      "email address for MSME OSEM",
+      "office location of MSME OSEM",
+      "get in touch with OSEM",
+      "एमएसएमई OSEM से कैसे संपर्क करें?",
+      "एमएसएमई OSEM phone number",
+      "एमएसएमई OSEM का office location"
+    ],
+    "responses": [
+      "You can contact MSME OSEM at:\n- Phone: 0522 423 3727\n- Email: info@msmeosem.in\n- Address: A-708-709, 7th Floor, Rohtas Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010",
+      "आप एमएसएमई OSEM से इस पर संपर्क कर सकते हैं:\n- Phone: 0522 423 3727\n- Email: info@msmeosem.in\n- Address: A-708-709, 7th Floor, Rohtas Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010"
+    ]
+  },
+  {
+    "intent": "about_upicon",
+    "patterns": [
+      "What is UPICON?",
+      "Tell me about UPICON",
+      "What does UPICON do?",
+      "Explain UPICON's mission",
+      "यूपीआईकॉन क्या है?",
+      "यूपीआईकॉन के बारे में बताएं",
+      "यूपीआईकॉन का mission क्या है?"
+    ],
+    "responses": [
+      " UPICON (Uttar Pradesh Industrial Consultants Limited) is dedicated to empowering MSMEs and entrepreneurs across Uttar Pradesh by offering skill development programs, financial assistance, and expert consultancy services. With a mission to build a sustainable and inclusive business ecosystem, UPICON actively supports small enterprises through capacity-building initiatives, banking and financial inclusion, and seamless facilitation of government schemes. By nurturing entrepreneurship and driving socio-economic growth, UPICON plays a vital role in strengthening the state's industrial and economic landscape.",
+      "यूपीआईकॉन (Uttar Pradesh Industrial Consultants Limited) skill development programs, financial assistance, और expert consultancy services offer करके उत्तर प्रदेश भर में एमएसएमई और entrepreneurs को सशक्त बनाने के लिए dedicated है। एक sustainable और inclusive business ecosystem build करने के mission के साथ, यूपीआईकॉन capacity-building initiatives, banking और financial inclusion, और government schemes के seamless facilitation के through small enterprises का actively support करता है। entrepreneurship nurture करके और socio-economic growth drive करके, यूपीआईकॉन state's industrial और economic landscape को strengthen करने में vital role निभाता है।"
+    ]
+  },
+  {
+    "intent": "office_address",
+    "patterns": [
+      "Where is UPICON located?",
+      "What is UPICON's registered office address?",
+      "Corporate office address?",
+      "Branch locations?",
+      "यूपीआईकॉन कहां स्थित है?",
+      "यूपीआईकॉन का registered office address क्या है?",
+      "Corporate office address?",
+      "Branch locations?"
+    ],
+    "responses": [
+      "Registered Office: 5th Floor, Kabir Bhawan, G. T. Road, Kanpur – 208002, Uttar Pradesh Corporate Office: A‑708‑709, 7th Floor, Rohtas Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow – 226 010.",
+      "Registered Office: 5th Floor, Kabir Bhawan, G. T. Road, Kanpur – 208002, Uttar Pradesh Corporate Office: A‑708‑709, 7th Floor, Rohtas Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow – 226 010."
+    ]
+  },
+  {
+    "intent": "contact_details",
+    "patterns": [
+      "How to contact UPICON?",
+      "Email address?",
+      "Phone number?",
+      "Banking support email?",
+      "यूपीआईकॉन से कैसे संपर्क करें?",
+      "Email address?",
+      "Phone number?",
+      "Banking support email?"
+    ],
+    "responses": [
+      "General enquiries – Email: info@upicon.in | Phone: 0522 423 3727",
+      "Banking support – Email: fi.up@upicon.in | Other queries: mdoffice@upicon.in",
+      "General enquiries – Email: info@upicon.in | Phone: 0522 423 3727",
+      "Banking support – Email: fi.up@upicon.in | Other queries: mdoffice@upicon.in"
+    ]
+  },
+  {
+    "intent": "services",
+    "patterns": [
+      "What services does UPICON provide?",
+      "How does UPICON help entrepreneurs?",
+      "Support for startups?",
+      "यूपीआईकॉन क्या services provide करता है?",
+      "यूपीआईकॉन entrepreneurs की कैसे मदद करता है?",
+      "startups के लिए support?"
+    ],
+    "responses": [
+      "UPICON offers a wide range of services to support entrepreneurs and MSMEs, including skill-development programs, banking-inclusion support, marketing workshops, and dedicated call-centre assistance. In addition, we provide end-to-end project execution, facilitate access to various government schemes, and actively promote women empowerment through targeted initiatives. These efforts are aimed at fostering inclusive growth and building a strong entrepreneurial ecosystem across Uttar Pradesh.",
+      "यूपीआईकॉन entrepreneurs और एमएसएमई का support करने के लिए skill-development programs, banking-inclusion support, marketing workshops, और dedicated call-centre assistance सहित services की wide range offer करता है। इसके अलावा, हम end-to-end project execution provide करते हैं, various government schemes तक access facilitate करते हैं, और targeted initiatives के through women empowerment actively promote करते हैं। ये efforts inclusive growth foster करने और उत्तर प्रदेश भर में strong entrepreneurial ecosystem build करने के aimed हैं।"
+    ]
+  },
+  {
+    "intent": "history",
+    "patterns": [
+      "When was UPICON founded?",
+      "History of UPICON?",
+      "How many branches does UPICON have?",
+      "यूपीआईकॉन की स्थापना कब हुई थी?",
+      "यूपीआईकॉन का इतिहास?",
+      "यूपीआईकॉन की कितनी branches हैं?"
+    ],
+    "responses": [
+      "Founded in 1974, UPICON now has six branches: Kanpur, Lucknow, Bhopal, Prayagraj, Patna, and Noida.",
+      "UPICON started in Kanpur and expanded pan‑India to support MSMEs with technology‑driven solutions.",
+      "1974 में स्थापित, यूपीआईकॉन के अब छह branches हैं: Kanpur, Lucknow, Bhopal, Prayagraj, Patna, और Noida।",
+      "यूपीआईकॉन की शुरुआत Kanpur में हुई और technology‑driven solutions के साथ एमएसएमई का support करने के लिए pan‑India expanded हुआ।"
+    ]
+  },
+  {
+    "intent": "full_form",
+    "patterns": [
+      "Full form of UPICON?",
+      "What does UPICON stand for?",
+      "यूपीआईकॉन का full form?",
+      "यूपीआईकॉन का क्या मतलब है?"
+    ],
+    "responses": [
+      "UP Industrial Consultants Limited.",
+      "यूपी इंडस्ट्रियल कंसल्टेंट्स लिमिटेड।"
+    ]
+  },
+  {
+    "intent": "problem_solving",
+    "patterns": [
+      "What problems does UPICON solve?",
+      "How does UPICON help rural development?",
+      "यूपीआईकॉन किन problems को solve करता है?",
+      "यूपीआईकॉन rural development में कैसे मदद करता है?"
+    ],
+    "responses": [
+      "UPICON actively addresses key challenges faced by MSMEs, including skill gaps, financial exclusion, and limited market access, through specialized training programs and expert consultancy services. Our initiatives focus on promoting rural entrepreneurship, empowering women through targeted support, and encouraging the adoption of emerging technologies such as Artificial Intelligence (AI) and the Internet of Things (IoT) to drive innovation and ensure sustainable business growth across Uttar Pradesh.",
+      "यूपीआईकॉन specialized training programs और expert consultancy services के through एमएसएमई द्वारा सामना किए जाने वाले key challenges, including skill gaps, financial exclusion, और limited market access, को actively addresses करता है। हमारी initiatives rural entrepreneurship promote करने, targeted support के through women को सशक्त बनाने, और innovation drive करने और उत्तर प्रदेश भर में sustainable business growth सुनिश्चित करने के लिए Artificial Intelligence (AI) और Internet of Things (IoT) जैसी emerging technologies के adoption encourage करने पर focus करती हैं।"
+    ]
+  },
+  {
+    "intent": "projects",
+    "patterns": [
+      "How does UPICON execute projects?",
+      "Project planning process?",
+      "यूपीआईकॉन projects को कैसे execute करता है?",
+      "Project planning process?"
+    ],
+    "responses": [
+      "UPICON offers end-to-end project management solutions, encompassing everything from strategic planning and on-ground execution to continuous monitoring and evaluation. With a network of skilled field workers and strong partnerships with government departments and agencies, we ensure seamless implementation and alignment with public development goals. Our services include robust support for the micro-business ecosystem, tailored workforce development programs to meet local industry demands, and the successful execution of social welfare projects focused on community upliftment, poverty reduction, and inclusive economic growth. Through our integrated approach, UPICON plays a vital role in fostering sustainable development and entrepreneurial resilience across Uttar Pradesh.",
+      "यूपीआईकॉन end-to-end project management solutions offer करता है, जिसमें strategic planning और on-ground execution से लेकर continuous monitoring और evaluation तक everything encompass होता है। skilled field workers के network और government departments और agencies के साथ strong partnerships के साथ, हम seamless implementation और public development goals के साथ alignment सुनिश्चित करते हैं। हमारी services micro-business ecosystem के लिए robust support, local industry demands को meet करने के लिए tailored workforce development programs, और community upliftment, poverty reduction, और inclusive economic growth पर focused social welfare projects की successful execution include करती हैं। हमारे integrated approach के through, यूपीआईकॉन उत्तर प्रदेश भर में sustainable development और entrepreneurial resilience foster करने में vital role निभाता है।"
+    ]
+  },
+  {
+    "intent": "osem_full_form",
+    "patterns": [
+      "What is the full form of OSEM?",
+      "OSEM stands for?",
+      "Meaning of OSEM",
+      "OSEM abbreviation",
+      "Expand OSEM",
+      "OSEM का full form क्या है?",
+      "OSEM का क्या मतलब है?",
+      "OSEM का विस्तार"
+    ],
+    "responses": [
+      "The full form of OSEM is Online System for Enterprise Management.",
+      "OSEM का full form Online System for Enterprise Management है।"
+    ]
+  },
+  {
+    "intent": "osem_lucknow_location",
+    "patterns": [
+      "Where is OSEM Lucknow located?",
+      "OSEM Lucknow address",
+      "Location of OSEM in Lucknow",
+      "OSEM Lucknow office",
+      "How to reach OSEM Lucknow?",
+      "OSEM Lucknow कहां स्थित है?",
+      "OSEM Lucknow का address",
+      "OSEM Lucknow office कैसे पहुंचें?"
+    ],
+    "responses": [
+      "OSEM Lucknow is at A‑708‑709, 7th Floor, Rohtas Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow – 226 010, Uttar Pradesh.",
+      "OSEM Lucknow A‑708‑709, 7th Floor, Rohtas Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow – 226 010, Uttar Pradesh में है।"
+    ]
+  },
+  {
+    "intent": "osem_contact_number",
+    "patterns": [
+      "What is OSEM's contact number?",
+      "Phone number of OSEM",
+      "OSEM helpline number",
+      "Call OSEM",
+      "How to contact OSEM by phone?",
+      "OSEM customer care number",
+      "OSEM का contact number क्या है?",
+      "OSEM का phone number",
+      "OSEM helpline number",
+      "OSEM से phone पर कैसे संपर्क करें?"
+    ],
+    "responses": [
+      "You can reach OSEM at 0522 423 3727 during business hours.",
+      "आप business hours के दौरान 0522 423 3727 पर OSEM से संपर्क कर सकते हैं।"
+    ]
+  },
+  {
+    "intent": "osem_key_features",
+    "patterns": [
+      "What are the key features of OSEM?",
+      "Tell me about OSEM's features",
+      "What does OSEM offer?",
+      "OSEM capabilities",
+      "Benefits of using OSEM",
+      "Why choose OSEM?",
+      "What makes OSEM special?",
+      "OSEM की key features क्या हैं?",
+      "OSEM के features के बारे में बताएं",
+      "OSEM क्या offer करता है?",
+      "OSEM के benefits"
+    ],
+    "responses": [
+      "OSEM offers these key features:\n1. Enterprise‑management platform with business‑process automation\n2. Real‑time analytics for data‑driven decisions\n3. Customisable modules for multiple industries\n4. Secure, scalable cloud integration\n5. User‑friendly dashboard\n6. Omnichannel customer‑engagement tools\n7. Built‑in government‑scheme support\n8. Specialised MSME tools",
+      "OSEM ये key features offer करता है:\n1. business‑process automation के साथ Enterprise‑management platform\n2. data‑driven decisions के लिए Real‑time analytics\n3. multiple industries के लिए Customisable modules\n4. Secure, scalable cloud integration\n5. User‑friendly dashboard\n6. Omnichannel customer‑engagement tools\n7. Built‑in government‑scheme support\n8. Specialised MSME tools"
+    ]
+  },
+  {
+    "intent": "youth_adda",
+    "patterns": [
+      "What is Youth Adda?",
+      "Tell me about Youth Adda program",
+      "Features of Youth Adda",
+      "Youth Adda benefits",
+      "How does Youth Adda work?",
+      "Youth programs by OSEM/UPICON",
+      "Opportunities for youth",
+      "यूथ अड्डा क्या है?",
+      "यूथ अड्डा program के बारे में बताएं",
+      "यूथ अड्डा के features",
+      "युवाओं के लिए opportunities"
+    ],
+    "responses": [
+      "Youth Adda is an innovative platform powered by UPICON, dedicated to empowering the youth of Uttar Pradesh with the tools, guidance, and resources they need to become successful business leaders. Whether you're looking for expert business advice, financial assistance, or unique startup ideas – Youth Adda is your one-stop destination. Our mission is to nurture entrepreneurial talent, drive innovation, and contribute to the economic development of the state. At Youth Adda, you can explore, discuss, and shape your dream business ideas – all in one place.",
+      "यूथ अड्डा यूपीआईकॉन द्वारा संचालित एक innovative platform है, जो उत्तर प्रदेश के youth को successful business leaders बनने के लिए needed tools, guidance, और resources के साथ सशक्त बनाने के लिए dedicated है। चाहे आप expert business advice, financial assistance, या unique startup ideas ढूंढ रहे हों – यूथ अड्डा आपकी one-stop destination है। हमारा mission entrepreneurial talent nurture करना, innovation drive करना, और state के economic development में contribute करना है। यूथ अड्डा पर, आप अपने dream business ideas explore, discuss, और shape कर सकते हैं – all in one place।"
+    ]
+  },
+  {
+    "intent": "youth_adda_address",
+    "patterns": [
+      "Address of Youth Adda",
+      "Where is Youth Adda located?",
+      "Youth Adda location",
+      "How to reach Youth Adda?",
+      "Youth Adda office address",
+      "Youth Adda situated",
+      "यूथ अड्डा का address",
+      "यूथ अड्डा कहां स्थित है?",
+      "यूथ अड्डा office का address",
+      "यूथ अड्डा कैसे पहुंचें?"
+    ],
+    "responses": [
+      "Youth Adda Address: Shop no M32, Vibhuti Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010",
+      "यूथ अड्डा Address: Shop no M32, Vibhuti Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010"
+    ]
+  },
+  {
+    "intent": "youth_adda_registration_visit",
+    "patterns": [
+      "How to register for Youth Adda?",
+      "How to register online Youth Adda",
+      "How to visit Youth Adda?",
+      "How to login Youth Adda",
+      "Youth Adda enrollment",
+      "Sign up for Youth Adda",
+      "Visit Youth Adda center",
+      "यूथ अड्डा के लिए कैसे register करें?",
+      "यूथ अड्डा में online कैसे register करें?",
+      "यूथ अड्डा कैसे visit करें?",
+      "यूथ अड्डा center visit करें"
+    ],
+    "responses": [
+      "Register/Login or schedule a visit in four steps:\n1. Go to <a href='https://msmeosem.in/youth-adda' target='_blank'>MSME OSEM Youth Adda</a>\n2. Complete the online form\n3. Receive confirmation with your Youth Adda ID\n4. Book a centre‑visit slot online.\nNeed help? Call 0522 423 3727 (Ext. 3) or email youth.adda@upicon.in.",
+      "चार steps में Register/Login या visit schedule करें:\n1. <a href='https://msmeosem.in/youth-adda' target='_blank'>एमएसएमई OSEM Youth Adda</a> पर जाएं\n2. online form complete करें\n3. अपने Youth Adda ID के साथ confirmation receive करें\n4. online centre‑visit slot book करें।\nमदद चाहिए? 0522 423 3727 (Ext. 3) पर call करें या youth.adda@upicon.in पर email करें।"
+    ]
+  },
+  {
+    "intent": "key_offering_youth_adda",
+    "patterns": [
+      "What are the key offerings at Youth Adda?",
+      "Tell me about services provided in Youth Adda",
+      "What can I get from Youth Adda?",
+      "Explain the facilities in Youth Adda",
+      "What support does Youth Adda offer?",
+      "Youth Adda loan and training details",
+      "What training or schemes are provided at Youth Adda?",
+      "Youth Adda franchise and mentorship options",
+      "यूथ अड्डा में key offerings क्या हैं?",
+      "यूथ अड्डा में provided services के बारे में बताएं",
+      "यूथ अड्डा से मुझे क्या मिल सकता है?",
+      "यूथ अड्डा में कौन सी training या schemes provided हैं?"
+    ],
+    "responses": [
+      "Key Offerings:\n\n🧠 Skill Development\nTraining in AI, drones, EVs, and digital tools tailored to local market needs.\n\n💼 Loan Facilitation\nEnd-to-end support for PMEGP, MUDRA, and CM Yuva Udyami loans.\n\n🏪 Franchise Opportunities\n100+ curated franchise models to promote entrepreneurship at the grassroots.\n\n🏢 MSME Support\nCompliance, SOPs, branding, tech adoption, and automation support.\n\n📜 Scheme Access\nSupport for PMEGP, ODOP, MUDRA, and more via a single-window desk.\n\n🎤 Mentorship & Events\nTalks, LaunchPads, and success showcases to inspire and guide young entrepreneurs.",
+      "मुख्य offerings:\n\n🧠 Skill Development\nस्थानीय बाजार की needs के लिए tailored AI, drones, EVs, और digital tools में training।\n\n💼 Loan Facilitation\nPMEGP, MUDRA, और CM Yuva Udyami loans के लिए end-to-end support।\n\n🏪 Franchise Opportunities\ngrassroots पर entrepreneurship promote करने के लिए 100+ curated franchise models।\n\n🏢 MSME Support\nCompliance, SOPs, branding, tech adoption, और automation support।\n\n📜 Scheme Access\nsingle-window desk के through PMEGP, ODOP, MUDRA, और more के लिए support।\n\n🎤 Mentorship & Events\nyoung entrepreneurs को inspire और guide करने के लिए Talks, LaunchPads, और success showcases।"
+    ]
+  },
+  {
+    "intent": "cmyuva_certificate_info",
+    "patterns": [
+      "What type of certificate do you provide?",
+      "Which certificate will I get after the program?",
+      "Do I get any certificate from this course?",
+      "Tell me about the certificate",
+      "Is there any certification for the CM YUVA program?",
+      "What certification do I get after completing the training?",
+      "Will I get a certificate?",
+      "Certificate provided after course?",
+      "CM YUVA program ka certificate milega kya?",
+      "Certificate ke liye kya karna hoga?",
+      "Mujhe kaunsa certificate milega?",
+      "How do I get the certificate?",
+      "आप किस प्रकार का certificate provide करते हैं?",
+      "Program के बाद मुझे कौन सा certificate मिलेगा?",
+      "क्या मुझे इस course से कोई certificate मिलेगा?",
+      "Certificate के बारे में बताएं",
+      "सीएम युवा program के लिए कोई certification है?",
+      "Training पूरी करने के बाद मुझे कौन सी certification मिलेगी?",
+      "क्या मुझे certificate मिलेगा?",
+      "Course के बाद certificate provided होता है?"
+    ],
+    "responses": [
+      "We provide a certificate <b>CM YUVA Entrepreneurship Program</b>, which is a 30-hour program. You must complete it in a minimum of 5 days.<br><br>After completing the course, you are eligible to appear for an MCQ exam. Once you pass the exam, you will receive the certificate for the CM YUVA Entrepreneurship Program.<br><br>After receiving the certificate, you will be eligible to apply for the loan under this scheme. Vist Here to enroll And take Certificate <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a>",
+      "हम एक certificate <b>CM YUVA Entrepreneurship Program</b> provide करते हैं, जो एक 30-hour program है। आपको इसे minimum 5 days में complete करना होगा।<br><br>Course complete करने के बाद, आप एक MCQ exam के लिए appear होने के eligible हैं। एक बार exam pass करने पर, आपको CM YUVA Entrepreneurship Program का certificate receive होगा।<br><br>Certificate receive करने के बाद, आप इस scheme के under loan के लिए apply करने के eligible होंगे। enroll और certificate लेने के लिए यहां visit करें <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a>"
+    ]
+  },
+  {
+    "intent": "e_learnings",
+    "patterns": [
+      "How to register for e-learning",
+      "Registration process for e-learning",
+      "Sign up for e-learning courses",
+      "Enroll in e-learning programs",
+      "Steps to join e-learning",
+      "Key features of e-Learning",
+      "Important points of e-Learning",
+      "Highlights of the e-Learning",
+      "How to online e-learning",
+      "E-Learning",
+      "E Learning",
+      "eLearning",
+      "e-learning के लिए कैसे register करें?",
+      "e-learning registration process",
+      "e-learning courses के लिए sign up करें",
+      "e-learning programs में enroll करें",
+      "e-learning में join होने के steps",
+      "e-Learning की key features",
+      "e-Learning की important points",
+      "e-Learning के highlights",
+      "ऑनलाइन e-learning कैसे करें?"
+    ],
+    "responses": [
+      "You can register for our e-Learning programs by visiting our website: <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a>. For any assistance with registration, you can contact us at: info@upicon.in or 📞 0522 423 3727. To register for e-Learning courses: 1. Visit our portal: <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a>, 2. Browse available courses, 3. Click on 'Register' or 'Enroll Now', and 4. Complete the registration form. Need help? Contact us at info@upicon.in or call 0522 423 3727. Understanding the difference between self-employment and entrepreneurship is crucial for young professionals, as both career paths offer distinct perspectives and opportunities. While self-employment involves managing one's own business and having direct control over income, entrepreneurship focuses on innovation, expansion, and making a large-scale impact. Enhance Your Skills with UPICON. Why Choose UPICON? - Live and Recorded Courses: Learn through live sessions or recorded lessons at your convenience. - Mentorship from Industry Experts: Gain insights and guidance from experienced entrepreneurs and specialists. - Business Skill Development: Master essential skills such as financial management, marketing strategies, and leadership abilities. - Networking Opportunities: Connect with investors, industry professionals, and fellow entrepreneurs. - Practical Learning: Learn through real-world case studies and hands-on business planning exercises. For More Information, Contact Us: info@upicon.in or call us at 0522 423 3727. Visit our website: <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a>.",
+      "आप हमारी website: <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a> पर जाकर हमारे e-Learning programs के लिए register कर सकते हैं। registration में किसी भी सहायता के लिए, आप हमसे info@upicon.in या 📞 0522 423 3727 पर संपर्क कर सकते हैं। e-Learning courses के लिए register करने के लिए: 1. हमारे portal: <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a> पर जाएं, 2. available courses browse करें, 3. 'Register' या 'Enroll Now' पर click करें, और 4. registration form complete करें। मदद चाहिए? info@upicon.in पर संपर्क करें या 0522 423 3727 पर call करें। self-employment और entrepreneurship के बीच के difference को समझना young professionals के लिए crucial है, क्योंकि दोनों career paths distinct perspectives और opportunities offer करते हैं। जबकि self-employment में अपने own business को manage करना और income पर direct control होना शामिल है, entrepreneurship innovation, expansion, और large-scale impact बनाने पर focuses करती है। UPICON के साथ अपने Skills Enhance करें। UPICON क्यों Choose करें? - Live और Recorded Courses: अपनी convenience पर live sessions या recorded lessons के through सीखें। - Industry Experts से Mentorship: experienced entrepreneurs और specialists से insights और guidance gain करें। - Business Skill Development: financial management, marketing strategies, और leadership abilities जैसे essential skills master करें। - Networking Opportunities: investors, industry professionals, और fellow entrepreneurs से connect करें। - Practical Learning: real-world case studies और hands-on business planning exercises के through सीखें। अधिक जानकारी के लिए, हमसे संपर्क करें: info@upicon.in या हमें 0522 423 3727 पर call करें। हमारी website visit करें: <a href='https://udyami.upicon.in/' target='_blank'>UPICON e-Learnings</a>।"
+    ]
+  }
+]
