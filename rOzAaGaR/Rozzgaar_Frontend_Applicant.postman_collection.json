@@ -1,0 +1,605 @@
+{
+  "info": {
+    "_postman_id": "rozzgaar-frontend-applicant-v1",
+    "name": "Rozzgaar — Frontend & Applicant APIs",
+    "description": "All public (frontend) and authenticated (applicant) API endpoints for rozzgaar.in.\n\nAdmin endpoints are excluded.\n\n**Auth flow:**\n1. Register → verify OTP → Login → copy `access_token`\n2. Set `{{token}}` variable to the access_token\n3. All \"🔒 Applicant\" requests use Bearer {{token}}\n\n**Variables required in your environment:**\n- `base_url`  = https://rozzgaar.in/apis\n- `open_key`  = rzg_open_9f3c7b1a2e4d6f8091b2c3d4e5f60718\n- `token`     = (filled after login)\n- `course_slug` = (any live course slug, e.g. instagram-marketing)\n- `bundle_slug`  = (any live bundle slug)\n- `order_number` = (filled after enroll)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url",    "value": "https://rozzgaar.in/apis", "type": "string" },
+    { "key": "open_key",    "value": "rzg_open_9f3c7b1a2e4d6f8091b2c3d4e5f60718", "type": "string" },
+    { "key": "token",       "value": "", "type": "string" },
+    { "key": "course_slug", "value": "instagram-marketing", "type": "string" },
+    { "key": "bundle_slug", "value": "", "type": "string" },
+    { "key": "order_number","value": "", "type": "string" },
+    { "key": "ver_id",      "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "🔓 Auth",
+      "item": [
+        {
+          "name": "Register (Step 1 — send OTP)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{open_key}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"salutation\": \"Mr\",\n  \"name\": \"Test User\",\n  \"mobile\": \"9876543210\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"state\": \"Uttar Pradesh\",\n  \"district\": \"Lucknow\",\n  \"referral_code\": \"\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/register", "host": ["{{base_url}}"], "path": ["auth","register"] },
+            "description": "Starts registration. Returns `verification_id` and sends OTP via SMS + Email. Save `verification_id` → `{{ver_id}}`."
+          }
+        },
+        {
+          "name": "Verify OTP (Step 2 — complete registration)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{open_key}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verification_id\": \"{{ver_id}}\",\n  \"otp\": \"123456\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/verify-otp", "host": ["{{base_url}}"], "path": ["auth","verify-otp"] },
+            "description": "Completes OTP verification. Creates the user account. You can now login."
+          }
+        },
+        {
+          "name": "Resend OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{open_key}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verification_id\": \"{{ver_id}}\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/resend-otp", "host": ["{{base_url}}"], "path": ["auth","resend-otp"] }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const j = pm.response.json();",
+                  "if (j.status === 'success' && j.data?.access_token) {",
+                  "  pm.collectionVariables.set('token', j.data.access_token);",
+                  "  console.log('Token saved:', j.data.access_token.substring(0,30)+'...');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{open_key}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/login", "host": ["{{base_url}}"], "path": ["auth","login"] },
+            "description": "Login with email+password (or mobile+password). Returns `access_token` — auto-saved to `{{token}}` via test script. Also supports: `{ \"mobile\": \"9876543210\", \"password\": \"...\" }`"
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{open_key}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"test@example.com\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/forgot-password", "host": ["{{base_url}}"], "path": ["auth","forgot-password"] },
+            "description": "Accepts email or mobile. Sends a 5-minute reset link. Always returns the same generic message (account enumeration prevention)."
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{open_key}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"PASTE_TOKEN_FROM_RESET_EMAIL_LINK_HERE\",\n  \"password\": \"newpassword123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/reset-password", "host": ["{{base_url}}"], "path": ["auth","reset-password"] },
+            "description": "Consume single-use reset token (from the reset email link). Revokes ALL sessions after successful reset."
+          }
+        },
+        {
+          "name": "Logout (this device)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/auth/logout", "host": ["{{base_url}}"], "path": ["auth","logout"] }
+          }
+        },
+        {
+          "name": "Logout (all devices)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/auth/logout-all", "host": ["{{base_url}}"], "path": ["auth","logout-all"] }
+          }
+        },
+        {
+          "name": "Active Sessions",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/auth/sessions", "host": ["{{base_url}}"], "path": ["auth","sessions"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🌐 Public — Courses",
+      "item": [
+        {
+          "name": "List Courses",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": {
+              "raw": "{{base_url}}/courses?page=1&limit=12",
+              "host": ["{{base_url}}"], "path": ["courses"],
+              "query": [
+                { "key": "page",   "value": "1" },
+                { "key": "limit",  "value": "12" },
+                { "key": "search", "value": "", "disabled": true }
+              ]
+            },
+            "description": "Paginated list of live courses. Query params: `page`, `limit` (max 50), `search`."
+          }
+        },
+        {
+          "name": "Course Detail (by slug)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": { "raw": "{{base_url}}/courses/{{course_slug}}", "host": ["{{base_url}}"], "path": ["courses","{{course_slug}}"] }
+          }
+        },
+        {
+          "name": "Course Contents (curriculum — public; material URLs need enrollment)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/courses/{{course_slug}}/contents", "host": ["{{base_url}}"], "path": ["courses","{{course_slug}}","contents"] },
+            "description": "Returns module/chapter curriculum for all callers. video_url and pdf_url are null unless the caller has a SUCCESS payment for this course."
+          }
+        },
+        {
+          "name": "List Bundles",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": { "raw": "{{base_url}}/courses/bundles", "host": ["{{base_url}}"], "path": ["courses","bundles"] }
+          }
+        },
+        {
+          "name": "Bundle Detail (by slug)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": { "raw": "{{base_url}}/courses/bundles/{{bundle_slug}}", "host": ["{{base_url}}"], "path": ["courses","bundles","{{bundle_slug}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🌐 Public — Misc",
+      "item": [
+        {
+          "name": "Get States",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": { "raw": "{{base_url}}/misc/states", "host": ["{{base_url}}"], "path": ["misc","states"] }
+          }
+        },
+        {
+          "name": "Get Districts (by state)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": {
+              "raw": "{{base_url}}/misc/districts?state=Uttar Pradesh",
+              "host": ["{{base_url}}"], "path": ["misc","districts"],
+              "query": [{ "key": "state", "value": "Uttar Pradesh" }]
+            }
+          }
+        },
+        {
+          "name": "Validate Referral Code",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": {
+              "raw": "{{base_url}}/misc/referral?code=DM001",
+              "host": ["{{base_url}}"], "path": ["misc","referral"],
+              "query": [{ "key": "code", "value": "DM001" }]
+            },
+            "description": "Returns `{ name, designation, code }` for a valid referral code, 404 for invalid."
+          }
+        },
+        {
+          "name": "Contact Form",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{open_key}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"mobile\": \"9876543210\",\n  \"email\": \"test@example.com\",\n  \"subject\": \"Query about courses\",\n  \"message\": \"I have a question about the Instagram Marketing course.\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/misc/contact", "host": ["{{base_url}}"], "path": ["misc","contact"] },
+            "description": "Rate limited: 5 submissions per IP per hour. Sends acknowledgment email to the submitter."
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔒 Applicant — Profile",
+      "item": [
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/user/profile", "host": ["{{base_url}}"], "path": ["user","profile"] },
+            "description": "Returns all profile fields including personal, certification (SSC) details, and picture_url."
+          }
+        },
+        {
+          "name": "Update Certification Details (PUT profile — SSC fields only)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gender\": \"Male\",\n  \"father_name\": \"Ram Prasad\",\n  \"mother_name\": \"Sunita Devi\",\n  \"dob\": \"1998-05-15\",\n  \"marital_status\": \"Single\",\n  \"religion\": \"Hindu\",\n  \"category\": \"General\",\n  \"id_proof_type\": \"Aadhaar\",\n  \"id_proof_number\": \"234567890123\",\n  \"education_level\": \"12th Pass\",\n  \"employment_status\": \"Student\",\n  \"disability\": \"No\",\n  \"address\": \"123, Gandhi Nagar, Lucknow\",\n  \"pincode\": \"226001\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/user/profile", "host": ["{{base_url}}"], "path": ["user","profile"] },
+            "description": "PUT updates SSC/certification fields. Name, mobile, email, state, district are LOCKED and ignored here. Mandatory before any course enrollment."
+          }
+        },
+        {
+          "name": "Get Certification Details (masked ID)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/user/details", "host": ["{{base_url}}"], "path": ["user","details"] },
+            "description": "Returns `complete` boolean + the details row. ID number is masked (last 4 digits only)."
+          }
+        },
+        {
+          "name": "Save Certification Details (PUT details)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gender\": \"Female\",\n  \"father_name\": \"Mohan Lal\",\n  \"mother_name\": \"Kamla Devi\",\n  \"dob\": \"2000-01-20\",\n  \"marital_status\": \"Single\",\n  \"religion\": \"Hindu\",\n  \"category\": \"OBC\",\n  \"id_proof_type\": \"Aadhaar\",\n  \"id_proof_number\": \"234567890456\",\n  \"education_level\": \"Graduate\",\n  \"employment_status\": \"Unemployed\",\n  \"disability\": \"No\",\n  \"address\": \"456, Hazratganj, Lucknow\",\n  \"pincode\": \"226001\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/user/details", "host": ["{{base_url}}"], "path": ["user","details"] }
+          }
+        },
+        {
+          "name": "Upload Profile Photo (base64 JPEG/PNG)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD...\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/user/upload-picture", "host": ["{{base_url}}"], "path": ["user","upload-picture"] },
+            "description": "Send a live-captured photo as a base64 data URI (JPEG or PNG, max ~2MB). Validates that the bytes are a real image. Required before enrollment.\n\nThe `image` field must start with: `data:image/jpeg;base64,...` or `data:image/png;base64,...`"
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_password\": \"password123\",\n  \"new_password\": \"newpassword456\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/user/change-password", "host": ["{{base_url}}"], "path": ["user","change-password"] },
+            "description": "Verifies current password before changing. Revokes ALL sessions on all devices after success — user must re-login."
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔒 Applicant — Enrollments",
+      "item": [
+        {
+          "name": "My Enrollments",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/user/enrollments", "host": ["{{base_url}}"], "path": ["user","enrollments"] },
+            "description": "All courses the user has successfully enrolled in (paid), with course metadata."
+          }
+        },
+        {
+          "name": "Enroll in Course (checkout)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const j = pm.response.json();",
+                  "if (j.status === 'success' && j.data?.order_number) {",
+                  "  pm.collectionVariables.set('order_number', j.data.order_number);",
+                  "  console.log('Order:', j.data.order_number);",
+                  "}",
+                  "// If payment_pending=true, open j.data.redirect_url in browser to pay"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_id\": 1,\n  \"referral_code\": \"\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/user/enroll", "host": ["{{base_url}}"], "path": ["user","enroll"] },
+            "description": "Enrollment gates (in order):\n1. Profile photo must be uploaded (422 code: PHOTO_REQUIRED)\n2. SSC certification details must be complete (422 code: DETAILS_REQUIRED)\n3. Course must be `availability='live'`\n4. Not already enrolled (409)\n\nWith ICICI gateway: returns `payment_pending=true` + `redirect_url` → open in browser.\nWith dummy gateway (dev): returns instant SUCCESS with `order_number` + `txn_id`.\n\n`referral_code` is optional; defaults to the code used at registration."
+          }
+        },
+        {
+          "name": "Enroll in Bundle (checkout)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const j = pm.response.json();",
+                  "if (j.status === 'success' && j.data?.order_number) {",
+                  "  pm.collectionVariables.set('order_number', j.data.order_number);",
+                  "  console.log('Bundle Order:', j.data.order_number, '| Courses enrolled:', j.data.courses_enrolled);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bundle_id\": 1,\n  \"referral_code\": \"\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/user/enroll-bundle", "host": ["{{base_url}}"], "path": ["user","enroll-bundle"] },
+            "description": "Same gates as single-course enrollment. Bundle must have ALL courses live. If user is already enrolled in some courses, only the remainder is charged. All-or-nothing transaction — partial enrollments are rolled back."
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔒 Applicant — Payment",
+      "item": [
+        {
+          "name": "Poll Payment Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/payment/status?order={{order_number}}",
+              "host": ["{{base_url}}"], "path": ["payment","status"],
+              "query": [{ "key": "order", "value": "{{order_number}}" }]
+            },
+            "description": "Poll after bank redirect back. Returns `status`: PENDING | SUCCESS | FAILED. If INITIATED, triggers a STATUS check against the bank (settles if the callback was missed). Poll every 3s up to ~30s."
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔒 Applicant — Reviews",
+      "item": [
+        {
+          "name": "My Reviews",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/reviews", "host": ["{{base_url}}"], "path": ["reviews"] }
+          }
+        },
+        {
+          "name": "Submit / Update Review (upsert)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_id\": 1,\n  \"rating\": 5,\n  \"review_text\": \"Excellent course, very practical and well-paced.\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/reviews", "host": ["{{base_url}}"], "path": ["reviews"] },
+            "description": "One review per user per course. Submitting again for the same course UPDATES the existing review. Must have a SUCCESS payment for the course (403 otherwise). Sends email confirmation."
+          }
+        },
+        {
+          "name": "Edit Review",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 4,\n  \"review_text\": \"Good course, could use more examples.\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/reviews/1", "host": ["{{base_url}}"], "path": ["reviews","1"] },
+            "description": "Replace `1` with the review ID from My Reviews. Owner-only."
+          }
+        },
+        {
+          "name": "Delete Review",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/reviews/1", "host": ["{{base_url}}"], "path": ["reviews","1"] },
+            "description": "Replace `1` with the review ID. Owner-only."
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔒 Applicant — Quiz & Assessment",
+      "item": [
+        {
+          "name": "My Certifications (eligibility overview)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/certification/my", "host": ["{{base_url}}"], "path": ["certification","my"] },
+            "description": "Returns all enrolled courses with assessment eligibility, last attempt status, pass/fail, certificate number, and content completion percentage."
+          }
+        },
+        {
+          "name": "Start Quiz",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_id\": 1\n}"
+            },
+            "url": { "raw": "{{base_url}}/quiz/start", "host": ["{{base_url}}"], "path": ["quiz","start"] },
+            "description": "Returns 30 random MCQs. 30-minute time limit. If already passed, returns an error with the certificate number."
+          }
+        },
+        {
+          "name": "Submit Quiz",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attempt_id\": 1,\n  \"answers\": {\n    \"1\": \"A\",\n    \"2\": \"B\",\n    \"3\": \"C\"\n  }\n}"
+            },
+            "url": { "raw": "{{base_url}}/quiz/submit", "host": ["{{base_url}}"], "path": ["quiz","submit"] },
+            "description": "Submit answers keyed by question_id. Must be within 30 min + 2 min grace of start. Pass = 30% or higher. No attempt cap — retake as many times as needed."
+          }
+        },
+        {
+          "name": "Quiz Result",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/quiz/result?course_id=1",
+              "host": ["{{base_url}}"], "path": ["quiz","result"],
+              "query": [{ "key": "course_id", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Get Certificate (download data)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/quiz/certificate?course_id=1",
+              "host": ["{{base_url}}"], "path": ["quiz","certificate"],
+              "query": [{ "key": "course_id", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Verify Certificate (public)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": {
+              "raw": "{{base_url}}/quiz/verify?certificate_number=RZG-CERT-XXXXXXXX",
+              "host": ["{{base_url}}"], "path": ["quiz","verify"],
+              "query": [{ "key": "certificate_number", "value": "RZG-CERT-XXXXXXXX" }]
+            },
+            "description": "Public endpoint — only requires open API key. Used by the /verify-certificate page."
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏥 Health",
+      "item": [
+        {
+          "name": "API Health Check",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{open_key}}" }],
+            "url": { "raw": "{{base_url}}/", "host": ["{{base_url}}"], "path": [""] },
+            "description": "Returns API version and available route names. No DB hit."
+          }
+        }
+      ]
+    }
+  ]
+}

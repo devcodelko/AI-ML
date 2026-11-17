@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Haqrikesh",
+    "mobile": "9876898767",
+    "email": "harikeshtiwari@amityonline.com",
+    "salutation": "Mr.",
+    "state": "Uttar Pradesh",
+    "district": "Sultanpur",
+    "referral_code": "",
+    "register_response": {
+      "status": "success",
+      "message": "Registration successful. You can now login.",
+      "data": {
+        "user_id": 24,
+        "verified": true
+      }
+    },
+    "submitted_at": "2026-07-28T11:32:42.205410"
+  },
+  {
+    "name": "hari",
+    "mobile": "9898989898",
+    "email": "harikeshtiwari@gmail.com",
+    "salutation": "Mr.",
+    "state": "Tamil Nadu",
+    "district": "Tiruppur",
+    "referral_code": "",
+    "register_response": {
+      "status": "success",
+      "message": "Registration successful. You can now login.",
+      "data": {
+        "user_id": 35,
+        "otp_required": false
+      }
+    },
+    "submitted_at": "2026-08-01T11:47:12.628567"
+  },
+  {
+    "name": "hari",
+    "mobile": "9498988765",
+    "email": "harikesh@gmail.com",
+    "salutation": "Mr.",
+    "state": "Uttar Pradesh",
+    "district": "Sitapur",
+    "referral_code": "",
+    "register_response": {
+      "status": "success",
+      "message": "Registration successful. You can now login.",
+      "data": {
+        "user_id": 36,
+        "otp_required": false
+      }
+    },
+    "submitted_at": "2026-08-04T17:44:45.793517"
+  },
+  {
+    "name": "हरिकेश तिवारी",
+    "mobile": "7237112233",
+    "email": "ghsaddfsahgf@gamil.com",
+    "salutation": "Mr.",
+    "state": "Uttar Pradesh",
+    "district": "Sultanpur",
+    "referral_code": "",
+    "register_response": {
+      "status": "success",
+      "message": "Registration successful. You can now login.",
+      "data": {
+        "user_id": 37,
+        "otp_required": false
+      }
+    },
+    "submitted_at": "2026-08-04T17:47:06.965723"
+  },
+  {
+    "name": "hari",
+    "mobile": "7676543546",
+    "email": "hari@gmail.com",
+    "salutation": "Mr",
+    "state": "Uttar Pradesh",
+    "district": "Shamli",
+    "referral_code": "",
+    "register_response": {
+      "status": "success",
+      "message": "Registration successful. You can now login.",
+      "data": {
+        "user_id": 40,
+        "otp_required": false
+      }
+    },
+    "submitted_at": "2026-08-05T14:16:55.891788"
+  }
+]

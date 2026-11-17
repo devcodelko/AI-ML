@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rozzgaar.in — Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Rozzgaar Brand Colors (Taken from logo and website vibe) */
+  --brand-red: #E63329; /* Primary Red */
+  --brand-red-dark: #B81F15; /* Darker Red */
+  --brand-red-light: #FEE2E0; /* Soft background */
+  --bg-main: #F8F9FC; /* Main page background */
+  --chat-bg: #FFFFFF;
+  --border-light: #E5E7EB;
+  --text-dark: #1F2937;
+  --text-muted: #6B7280;
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --radius-card: 24px;
+  font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-main);
+  font-family: inherit;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+}
+
+/* Page Placeholder Content */
+.page-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+}
+.page-content h1 { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px; }
+.page-content p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 25px; }
+.page-content img { max-width: 120px; margin-bottom: 20px; }
+
+/* --- Floating Chatbot Widget Styles --- */
+
+/* The Toggle Button (Closed State) */
+#chatToggleBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: var(--brand-red);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(230, 51, 41, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 9999;
+}
+#chatToggleBtn:hover {
+  transform: scale(1.05) translateY(-2px);
+  background: var(--brand-red-dark);
+}
+#chatToggleBtn svg { width: 28px; height: 28px; }
+#chatToggleBtn .close-icon { display: none; }
+#chatToggleBtn.open { background: var(--brand-red-dark); }
+#chatToggleBtn.open .open-icon { display: none; }
+#chatToggleBtn.open .close-icon { display: block; }
+
+/* The Chat Window Container */
+#chatContainer {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 400px;
+  height: 600px;
+  max-width: 92vw;
+  max-height: 80vh;
+  background: var(--chat-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 9998;
+  border: 1px solid var(--border-light);
+}
+#chatContainer.open {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Chat Header */
+.chat-header {
+  background: var(--brand-red);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+.chat-header .logo-img {
+  width: 32px;
+  height: 32px;
+  background: white;
+  border-radius: 8px;
+  padding: 2px;
+  object-fit: contain;
+}
+.chat-header .title { font-weight: 600; font-size: 1.05rem; line-height: 1.2; }
+.chat-header .subtitle { font-size: 0.75rem; opacity: 0.9; }
+.chat-header .header-actions { margin-left: auto; display: flex; gap: 5px; }
+.chat-header .header-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.chat-header .header-btn:hover { background: rgba(255,255,255,0.25); }
+.chat-header .header-btn svg { width: 16px; height: 16px; }
+
+/* Language Gate Overlay */
+#langGate{
+  position: absolute; inset: 0; top: 60px; background: var(--chat-bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 30px; z-index: 20; text-align: center; border-radius: 0 0 var(--radius-card) var(--radius-card);
+}
+#langGate.hidden{display:none;}
+#langGate .big-emoji{font-size: 3rem; background: var(--brand-red-light); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
+#langGate h2{font-size: 1.1rem; font-weight: 600; color: var(--text-dark);}
+#langGate p{color: var(--text-muted); font-size: 0.85rem; max-width: 280px; line-height: 1.5;}
+.lang-choice-row{display:flex; gap:12px; margin-top: 6px; width: 100%; justify-content: center;}
+.lang-choice{
+  background: #F3F4F6; border: 2px solid transparent; color: var(--text-dark);
+  padding: 14px 24px; border-radius: 14px; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 4px; transition: 0.2s; flex: 0 1 100px;
+}
+.lang-choice span.flag{font-size: 1.6rem;}
+.lang-choice:hover{background: white; border-color: var(--brand-red); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(230, 51, 41, 0.15);}
+
+/* Messages Area */
+#messages{
+  flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; background: #FAFAFB;
+}
+#messages::-webkit-scrollbar{width: 4px;}
+#messages::-webkit-scrollbar-thumb{background: #D1D5DB; border-radius: 4px;}
+
+.msg{
+  max-width: 90%; padding: 10px 16px; border-radius: 16px; font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word;
+}
+.msg.bot{
+  align-self: flex-start; background: white; color: var(--text-dark); border: 1px solid var(--border-light); border-bottom-left-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.msg.user{
+  align-self: flex-end; background: var(--brand-red); color: white; border-bottom-right-radius: 4px;
+}
+
+/* Options Chips */
+.options-row{display:flex; flex-wrap:wrap; gap:8px; align-self:flex-start; max-width:95%; margin-top: 4px;}
+.opt-chip{
+  background: white; border: 1px solid var(--border-light); color: var(--text-dark);
+  padding: 7px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.opt-chip:hover{border-color: var(--brand-red); color: var(--brand-red); background: var(--brand-red-light); transform: translateY(-1px);}
+
+/* Typing Animation */
+.typing{
+  align-self: flex-start; display: flex; gap: 4px; padding: 12px 16px; background: white; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.typing span{width: 6px; height: 6px; border-radius: 50%; background: #9CA3AF; animation: blink 1.4s infinite;}
+.typing span:nth-child(2){animation-delay: 0.2s;}
+.typing span:nth-child(3){animation-delay: 0.4s;}
+@keyframes blink{0%,80%,100%{opacity: 0.2;} 40%{opacity: 1;}}
+
+/* Hint Bar */
+#hintBar{padding: 6px 20px; font-size: 0.7rem; color: var(--text-muted); background: var(--chat-bg); border-top: 1px solid var(--border-light); flex-shrink: 0;}
+
+/* Input Bar */
+#inputBar{
+  display: flex; align-items: center; gap: 8px; padding: 10px 15px 14px 15px; background: var(--chat-bg); border-top: 1px solid var(--border-light); flex-shrink: 0;
+}
+#textInput{
+  flex: 1; background: #F3F4F6; border: 2px solid transparent; color: var(--text-dark);
+  border-radius: 12px; padding: 10px 16px; font-size: 0.9rem; outline: none; font-family: inherit; transition: 0.2s;
+}
+#textInput:focus{border-color: var(--brand-red); background: white;}
+.round-btn{
+  width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.2s;
+}
+.round-btn svg{width: 18px; height: 18px;}
+
+@keyframes pulse-mic{0%{box-shadow: 0 0 0 0 rgba(239,68,68,0.4);} 70%{box-shadow: 0 0 0 8px rgba(239,68,68,0);} 100%{box-shadow: 0 0 0 0 rgba(239,68,68,0);}}
+
+/* Voice Mode Button (continuous talk-and-listen, like ChatGPT / Gemini voice) */
+.voice-mode-btn{background: var(--brand-red-light); color: var(--brand-red);}
+.voice-mode-btn:hover{background: var(--brand-red); color: white;}
+.voice-mode-btn .icon-active{display:none;}
+.voice-mode-btn.active{background: var(--brand-red); color: white;}
+.voice-mode-btn.active .icon-idle{display:none;}
+.voice-mode-btn.active .icon-active{display:block;}
+.voice-mode-btn.listening{background: #EF4444; color: white; animation: pulse-mic 1.1s infinite;}
+.voice-mode-btn.speaking{background: var(--brand-red-dark); color: white; animation: pulse-speak 1s infinite;}
+.voice-mode-btn.thinking{opacity: 0.7;}
+.voice-mode-btn.disabled{opacity: 0.4; cursor: not-allowed; pointer-events: none;}
+@keyframes pulse-speak{0%{box-shadow: 0 0 0 0 rgba(184,31,21,0.45);} 70%{box-shadow: 0 0 0 10px rgba(184,31,21,0);} 100%{box-shadow: 0 0 0 0 rgba(184,31,21,0);}}
+
+/* Word-by-word streaming caret for bot replies while they are being revealed */
+.msg.bot.typing-live::after{
+  content: "";
+  display: inline-block;
+  width: 6px; height: 14px;
+  margin-left: 2px;
+  background: var(--text-muted);
+  vertical-align: middle;
+  animation: blink 0.9s infinite;
+}
+
+.send-btn{background: var(--brand-red); color: white;}
+.send-btn:hover{background: var(--brand-red-dark); transform: scale(1.05);}
+/* Stop-speaking button — only shown while audio is actively playing */
+.stop-speak-btn{background: #EF4444; color: white; animation: pulse-mic 1.1s infinite;}
+.stop-speak-btn:hover{background: #DC2626; transform: scale(1.05);}
+.eye-btn{background: #F3F4F6; color: var(--text-muted);}
+.eye-btn:hover{color: var(--brand-red);}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  #chatContainer { bottom: 80px; right: 10px; width: calc(100vw - 20px); max-height: 75vh; }
+  #chatToggleBtn { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Dummy Page Content to represent the website -->
+<!-- <div class="page-content">
+  <img src="https://rozzgaar.in/assets/image/logo.png" alt="Rozzgaar Logo" style="width: 100px; height: auto; margin: 0 auto;">
+  <h1>Welcome to Rozzgaar.in</h1>
+  <p>We help connect talent with the right opportunities. Click the red button at the bottom right to chat with our assistant.</p>
+</div> -->
+
+<!-- Floating Chat Toggle Button -->
+<button id="chatToggleBtn" onclick="toggleChat()">
+  <svg class="open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+</button>
+
+<!-- Chat Window Container -->
+<div id="chatContainer">
+  
+  <!-- Chat Header -->
+  <div class="chat-header">
+    <img src="https://rozzgaar.in/assets/image/favicon.svg" alt="Rozzgaar Logo" class="logo-img">
+    <div>
+      <div class="title">Rozzgaar Assistant</div>
+      <div class="subtitle" id="headerSubtitle">Register • Courses • Support</div>
+    </div>
+
+  </div>
+
+  <!-- Language Selector Overlay -->
+  <div id="langGate">
+    <div class="big-emoji">🙏</div>
+    <h2>Select your language<br>कृपया अपनी भाषा चुनें</h2>
+    <p>Assistant will respond in your chosen language.</p>
+    <div class="lang-choice-row">
+      <button class="lang-choice" onclick="pickLanguage('en')"><span class="flag">🇬🇧</span>English</button>
+      <button class="lang-choice" onclick="pickLanguage('hi')"><span class="flag">🇮🇳</span>हिंदी</button>
+    </div>
+  </div>
+
+  <!-- Chat Body -->
+  <div id="messages">
+    <div class="msg bot">Namaste! 🙏 Welcome to Rozzgaar. Please select a language above to get started.</div>
+  </div>
+  <div id="hintBar"></div>
+
+  <!-- Chat Footer -->
+  <div id="inputBar">
+    <input id="textInput" type="text" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendTyped()" />
+    <button class="round-btn eye-btn" id="eyeBtn" style="display:none;" onclick="togglePasswordVisibility()" title="Show/Hide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+    <button class="round-btn voice-mode-btn" id="voiceModeBtn" onclick="toggleVoiceMode()" title="Tap to talk — hands-free voice chat / बोलकर बात करने के लिए टैप करें">
+      <svg class="icon-idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3z"/>
+        <path d="M19 11a7 7 0 01-14 0"/>
+        <line x1="12" y1="19" x2="12" y2="22"/>
+      </svg>
+      <svg class="icon-active" viewBox="0 0 24 24" fill="currentColor"><rect x="8" y="8" width="8" height="8" rx="2"></rect></svg>
+    </button>
+    <button class="round-btn stop-speak-btn" id="stopSpeakBtn" style="display:none;" onclick="stopSpeakButtonClicked()" title="Stop speaking / बोलना रोकें">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"></rect></svg>
+    </button>
+    <button class="round-btn send-btn" onclick="sendTyped()" title="Send">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+<audio id="ttsAudioPlayer" style="display:none;"></audio>
+
+<script>
+/* --- Backend Connection Configuration --- */
+const API_BASE = ""; // Leave empty if currently just client-side. Put your endpoint here.
+const sessionId = "sess_" + Math.random().toString(36).slice(2) + Date.now();
+let lang = null;
+let currentType = null;
+let isChatOpen = false;
+let voiceModeOn = false;   // hands-free continuous talk-and-listen mode
+let voiceModeRecognizer = null;
+let voiceRestartTimer = null;
+let silenceTimer = null;
+let cachedVoices = [];
+let interimFinalTranscript = "";
+let sttFallbackMode = false;   // true once server STT proves unavailable -> use browser recognizer
+let mediaStream = null;
+let mediaRecorder = null;
+let audioChunks = [];
+let audioCtx = null;
+let analyserNode = null;
+let volumeTimer = null;
+let voiceMaxTimer = null;
+
+const SPEECH_LANG = { en: "en-IN", hi: "hi-IN" };
+
+/* --- Chat Toggle Logic --- */
+function toggleChat() {
+  isChatOpen = !isChatOpen;
+  document.getElementById('chatContainer').classList.toggle('open', isChatOpen);
+  document.getElementById('chatToggleBtn').classList.toggle('open', isChatOpen);
+}
+
+/* --- Core Application Logic --- */
+function pickLanguage(l){
+  lang = l;
+  document.getElementById("langGate").classList.add("hidden");
+  document.getElementById("headerSubtitle").textContent =
+    l === "hi" ? "रजिस्टर • कोर्सेज़ • सहायता" : "Register • Courses • Support";
+  document.getElementById("messages").innerHTML = ''; // Clear initial message
+  callBackend("__SET_LANG__:" + l, false);
+}
+
+function addMessage(role, text){
+  const wrap = document.getElementById("messages");
+  const el = document.createElement("div");
+  el.className = "msg " + role;
+  el.textContent = text;
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+  return el;
+}
+
+// Reveals a bot reply word by word (ChatGPT-style streaming feel) even though
+// the backend sends the full reply in one go. Returns a Promise that resolves
+// once every word has been shown.
+function addMessageBotTyped(text){
+  const wrap = document.getElementById("messages");
+  const el = document.createElement("div");
+  el.className = "msg bot typing-live";
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+
+  const words = (text || "").split(" ").filter(w => w.length > 0);
+  if(words.length === 0){
+    el.classList.remove("typing-live");
+    return Promise.resolve(el);
+  }
+
+  return new Promise(resolve => {
+    let i = 0;
+    function step(){
+      el.textContent += (i > 0 ? " " : "") + words[i];
+      i++;
+      wrap.scrollTop = wrap.scrollHeight;
+      if(i < words.length){
+        setTimeout(step, 45);
+      } else {
+        el.classList.remove("typing-live");
+        resolve(el);
+      }
+    }
+    step();
+  });
+}
+
+function clearOldOptions(){
+  document.querySelectorAll(".options-row").forEach(el => el.remove());
+}
+
+function addOptions(options){
+  clearOldOptions();
+  if(!options || !options.length) return;
+  const wrap = document.getElementById("messages");
+  const row = document.createElement("div");
+  row.className = "options-row";
+  options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "opt-chip";
+    btn.textContent = opt.label;
+    if(typeof opt.value === "string" && opt.value.indexOf("__OPEN_LINK__:") === 0){
+      const url = opt.value.slice("__OPEN_LINK__:".length);
+      btn.onclick = () => window.open(url, "_blank", "noopener");
+    } else {
+      btn.onclick = () => {
+        clearOldOptions();
+        callBackend(opt.value, true, opt.label);
+      };
+    }
+    row.appendChild(btn);
+  });
+  wrap.appendChild(row);
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function addTyping(){
+  const wrap = document.getElementById("messages");
+  const el = document.createElement("div");
+  el.className = "typing";
+  el.id = "typingIndicator";
+  el.innerHTML = "<span></span><span></span><span></span>";
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+}
+function removeTyping(){
+  const t = document.getElementById("typingIndicator");
+  if(t) t.remove();
+}
+
+function applyInputModeForType(type){
+  currentType = type || null;
+  const input = document.getElementById("textInput");
+  const eyeBtn = document.getElementById("eyeBtn");
+  const voiceBtn = document.getElementById("voiceModeBtn");
+  const hint = document.getElementById("hintBar");
+
+  const isPassword = type === "reg_password";
+  input.type = isPassword ? "password" : "text";
+  eyeBtn.style.display = isPassword ? "flex" : "none";
+
+  if(isPassword){
+    voiceBtn.classList.add("disabled");
+    if(voiceModeOn) stopVoiceMode();
+    hint.textContent = lang === "hi"
+      ? "सुरक्षा के लिए पासवर्ड टाइप करें, बोलकर नहीं।"
+      : "For safety, please type your password instead of speaking it.";
+  } else if(type === "reg_email" || type === "contact_email"){
+    voiceBtn.classList.remove("disabled");
+    hint.textContent = lang === "hi"
+      ? "बोलें: name एट जीमेल डॉट कॉम — या टाइप करें।"
+      : "Say: name AT gmail DOT com — or just type it.";
+  } else if(type === "reg_mobile" || type === "contact_mobile"){
+    voiceBtn.classList.remove("disabled");
+    hint.textContent = lang === "hi" ? "10 अंकों का मोबाइल नंबर बोलें या टाइप करें।" : "Say or type your 10-digit number.";
+  } else {
+    voiceBtn.classList.remove("disabled");
+    if(!voiceModeOn) hint.textContent = "";
+  }
+  input.value = "";
+  if(!voiceModeOn) input.focus();
+}
+
+function togglePasswordVisibility(){
+  const input = document.getElementById("textInput");
+  input.type = input.type === "password" ? "text" : "password";
+}
+
+// ── Number-to-words (mirrors tts.py, for the browser-voice fallback) ──────
+const NUM_ONES = ["zero","one","two","three","four","five","six","seven","eight","nine","ten",
+  "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+const NUM_TENS = ["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+
+function twoDigitWords(n){
+  if(n < 20) return NUM_ONES[n];
+  const t = Math.floor(n/10), o = n%10;
+  return NUM_TENS[t] + (o ? " " + NUM_ONES[o] : "");
+}
+function fourDigitWords(n){
+  const first = Math.floor(n/100), second = n%100;
+  if(second === 0) return twoDigitWords(first) + " hundred";
+  if(second < 10) return twoDigitWords(first) + " oh " + NUM_ONES[second];
+  return twoDigitWords(first) + " " + twoDigitWords(second);
+}
+function intToWords(n){
+  if(n === 0) return "zero";
+  if(n < 0) return "minus " + intToWords(-n);
+  if(n < 20) return NUM_ONES[n];
+  if(n < 100) return twoDigitWords(n);
+  if(n < 1000){
+    const h = Math.floor(n/100), rem = n%100;
+    return NUM_ONES[h] + " hundred" + (rem ? " " + twoDigitWords(rem) : "");
+  }
+  if(n < 10000) return fourDigitWords(n);
+  if(n < 1000000){
+    const th = Math.floor(n/1000), rem = n%1000;
+    return intToWords(th) + " thousand" + (rem ? " " + intToWords(rem) : "");
+  }
+  const mil = Math.floor(n/1000000), rem = n%1000000;
+  return intToWords(mil) + " million" + (rem ? " " + intToWords(rem) : "");
+}
+function moneyToWords(intPart, decPart){
+  const n = parseInt(intPart.replace(/,/g, ""), 10);
+  let words = intToWords(n);
+  if(decPart){
+    const digits = decPart.slice(1);
+    if(/[^0]/.test(digits)){
+      words += " point " + digits.split("").map(d => NUM_ONES[parseInt(d,10)]).join(" ");
+    }
+  }
+  return words;
+}
+const SYMBOL_MONEY_RE = /(?:₹|Rs\.?|INR)\s*(\d[\d,]*)(\.\d{1,2})?/gi;
+const COMMA_NUMBER_RE = /\b(\d{1,3}(?:,\d{2,3})+)(\.\d{1,2})?\b/g;
+const DECIMAL_NUMBER_RE = /\b(\d+)(\.\d{1,2})\b/g;
+
+function speakableText(text){
+  let t = text || "";
+  // Read email addresses naturally: "name@gmail.com" -> "name at gmail dot com"
+  // instead of the TTS engine mangling the @ symbol.
+  t = t.replace(/([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*)\.([a-zA-Z]{2,})/g,
+    (m, user, domain, tld) => `${user} at ${domain} dot ${tld}`);
+  // Any stray @ left (usernames, handles) -> "at"
+  t = t.replace(/@/g, " at ");
+  // Money/amounts -> natural words BEFORE the digit-spacing rule below, so
+  // "₹1,500.00" or "1500.00" reads "fifteen hundred", not spaced digits.
+  t = t.replace(SYMBOL_MONEY_RE, (m, ip, dp) => moneyToWords(ip, dp));
+  t = t.replace(COMMA_NUMBER_RE, (m, ip, dp) => moneyToWords(ip, dp));
+  t = t.replace(DECIMAL_NUMBER_RE, (m, ip, dp) => moneyToWords(ip, dp));
+  // Strip emoji / pictographic symbols so the voice doesn't try to say them.
+  t = t.replace(/[\u{1F1E6}-\u{1F1FF}\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, "");
+  // Strip bullets / dashes used for list formatting.
+  t = t.replace(/[•\-–—]/g, " ");
+  // Long digit runs (mobile numbers, OTPs) should be read digit-by-digit,
+  // not as one giant number (e.g. Hindi TTS reading "7237464620" as
+  // "72 crore 37 lakh..."). Space them out so each digit is read separately,
+  // in plain phone-number style: 7 2 3 7 4 6 4 6 2 0.
+  t = t.replace(/\d{4,}/g, (m) => m.split("").join(" "));
+  // Collapse extra whitespace left behind by the replacements above.
+  t = t.replace(/\s+/g, " ").trim();
+  return t;
+}
+
+// --- Voice catalogue: browsers load voices asynchronously (and Chrome returns
+// an empty list on the very first call), so we cache the list and refresh it
+// whenever the browser reports it changed.
+function refreshVoiceCache(){
+  if(!window.speechSynthesis) return;
+  const v = window.speechSynthesis.getVoices();
+  if(v && v.length) cachedVoices = v;
+}
+if(window.speechSynthesis){
+  refreshVoiceCache();
+  window.speechSynthesis.onvoiceschanged = refreshVoiceCache;
+}
+
+// Picks the clearest available voice for the given language. Prefers modern
+// natural/neural engines (Google, Microsoft Neural/Natural, Apple "Enhanced")
+// over the older, muddier default system voices.
+function pickBestVoice(targetLang){
+  if(!cachedVoices.length) refreshVoiceCache();
+  if(!cachedVoices.length) return null;
+
+  const wantHi = targetLang.toLowerCase().startsWith("hi");
+  const langMatches = cachedVoices.filter(v => v.lang && v.lang.toLowerCase().startsWith(wantHi ? "hi" : "en"));
+  const pool = langMatches.length ? langMatches : cachedVoices;
+
+  const rank = (v) => {
+    const n = (v.name || "").toLowerCase();
+    let score = 0;
+    if(n.includes("neural") || n.includes("natural")) score += 4;
+    if(n.includes("google")) score += 3;
+    if(n.includes("enhanced") || n.includes("premium")) score += 3;
+    if(n.includes("online")) score += 1;
+    // Slight preference for Indian-region voices when speaking English, so
+    // pronunciation of Indian names/places lands naturally.
+    if(!wantHi && v.lang && v.lang.toLowerCase() === "en-in") score += 2;
+    return score;
+  };
+
+  return pool.slice().sort((a, b) => rank(b) - rank(a))[0] || null;
+}
+
+// The assistant always reads its reply aloud (best for users who can't read/type
+// well). playReply() is the single entry point: it plays the server-generated
+// TTS.ai (Kokoro) audio when the backend supplied one, and only falls back to
+// the browser's built-in voice (speak()) if no server audio is available.
+const ttsPlayer = document.getElementById("ttsAudioPlayer");
+
+function playReply(text, audioDataUri){
+  stopSpeaking(); // clear out any previous playback/utterance first
+  if(audioDataUri){
+    playServerAudio(text, audioDataUri);
+  } else {
+    speak(text);
+  }
+}
+
+// Plays the mp3 (base64 data URI) returned by the backend's /chat response.
+function playServerAudio(text, audioDataUri){
+  const btn = document.getElementById("voiceModeBtn");
+  const stopBtn = document.getElementById("stopSpeakBtn");
+  ttsPlayer.src = audioDataUri;
+  ttsPlayer.onplay = () => {
+    btn.classList.remove("listening", "thinking");
+    btn.classList.add("speaking");
+    stopBtn.style.display = "flex";
+    setVoiceHint("speaking");
+  };
+  ttsPlayer.onended = () => {
+    btn.classList.remove("speaking");
+    stopBtn.style.display = "none";
+    if(voiceModeOn) setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, 300);
+  };
+  ttsPlayer.onerror = () => {
+    btn.classList.remove("speaking");
+    stopBtn.style.display = "none";
+    speak(text); // server audio failed to play — fall back to the browser voice
+  };
+  ttsPlayer.play().catch(() => {
+    // Autoplay can be blocked in some browsers before the user has interacted
+    // with the page — fall back to the browser voice in that case.
+    speak(text);
+  });
+}
+
+// Fallback path: the browser's own speechSynthesis voice, used only when the
+// backend didn't return TTS.ai audio (e.g. TTS.ai not configured or briefly
+// unavailable) or when playback of the server audio itself failed.
+function speak(text){
+  const btn = document.getElementById("voiceModeBtn");
+  const stopBtn = document.getElementById("stopSpeakBtn");
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const cleaned = speakableText(text).slice(0, 600);
+  if(!cleaned){
+    // Nothing to say — if we're mid conversation-mode, go straight back to listening.
+    if(voiceModeOn) setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, 300);
+    return;
+  }
+
+  const targetLang = SPEECH_LANG[lang] || "en-IN";
+  const speakNow = () => {
+    const utter = new SpeechSynthesisUtterance(cleaned);
+    const bestVoice = pickBestVoice(targetLang);
+    if(bestVoice){
+      utter.voice = bestVoice;
+      utter.lang = bestVoice.lang;
+    } else {
+      utter.lang = targetLang;
+    }
+    // Slightly slower + full volume/pitch for maximum clarity, especially
+    // over phone speakers or in noisy environments.
+    utter.rate = 0.92;
+    utter.pitch = 1.0;
+    utter.volume = 1.0;
+    utter.onstart = () => { btn.classList.remove("listening", "thinking"); btn.classList.add("speaking"); stopBtn.style.display = "flex"; setVoiceHint("speaking"); };
+    utter.onend = () => {
+      btn.classList.remove("speaking");
+      stopBtn.style.display = "none";
+      if(voiceModeOn) setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, 300);
+    };
+    utter.onerror = () => {
+      btn.classList.remove("speaking");
+      stopBtn.style.display = "none";
+      if(voiceModeOn) setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, 300);
+    };
+    window.speechSynthesis.speak(utter);
+  };
+
+  // If voices haven't loaded yet (fresh page load), wait one tick for them
+  // rather than falling back to a lower-quality default voice.
+  if(!cachedVoices.length){
+    setTimeout(speakNow, 150);
+  } else {
+    speakNow();
+  }
+}
+
+// Stops whichever voice is currently speaking (server audio or browser
+// voice) — wired to the Stop button so the user can always cut playback
+// short instead of being forced to listen to the whole reply.
+function stopSpeaking(){
+  const btn = document.getElementById("voiceModeBtn");
+  const stopBtn = document.getElementById("stopSpeakBtn");
+  try{ ttsPlayer.onplay = null; ttsPlayer.onended = null; ttsPlayer.onerror = null; ttsPlayer.pause(); ttsPlayer.currentTime = 0; }catch(e){}
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  btn.classList.remove("speaking");
+  stopBtn.style.display = "none";
+}
+
+// Manual stop button handler — also nudges hands-free voice mode straight
+// back to listening, so tapping Stop feels like "ok, your turn" rather than
+// just going silent.
+function stopSpeakButtonClicked(){
+  stopSpeaking();
+  if(voiceModeOn){
+    setVoiceHint("idle");
+    setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, 200);
+  }
+}
+
+/* --- Continuous "Voice Mode" (hands-free talk-and-listen, like ChatGPT/Gemini voice) --- */
+
+function setVoiceHint(state){
+  if(!voiceModeOn) return;
+  const hint = document.getElementById("hintBar");
+  const map = {
+    listening: lang === "hi" ? "सुन रहा हूँ… बोलिए" : "Listening… please speak",
+    thinking:  lang === "hi" ? "सोच रहा हूँ…" : "Thinking…",
+    speaking:  lang === "hi" ? "बोल रहा हूँ…" : "Speaking…",
+    idle:      lang === "hi" ? "बातचीत मोड चालू है — बोलने के लिए तैयार" : "Voice chat is on — ready when you are"
+  };
+  hint.textContent = map[state] || "";
+}
+
+function toggleVoiceMode(){
+  const btn = document.getElementById("voiceModeBtn");
+  if(btn.classList.contains("disabled")) return;
+  voiceModeOn = !voiceModeOn;
+  btn.classList.toggle("active", voiceModeOn);
+  if(voiceModeOn){
+    if(!lang){ addMessage("bot", "Please choose a language first. / कृपया पहले भाषा चुनें।"); voiceModeOn = false; btn.classList.remove("active"); return; }
+    setVoiceHint("idle");
+    startVoiceListening();
+  } else {
+    stopVoiceMode();
+  }
+}
+
+function stopVoiceMode(){
+  voiceModeOn = false;
+  const btn = document.getElementById("voiceModeBtn");
+  btn.classList.remove("active", "listening", "speaking", "thinking");
+  clearTimeout(silenceTimer);
+  clearTimeout(voiceRestartTimer);
+  clearTimeout(voiceMaxTimer);
+  clearInterval(volumeTimer);
+  interimFinalTranscript = "";
+  if(voiceModeRecognizer){
+    voiceModeRecognizer.onresult = null;
+    voiceModeRecognizer.onerror = null;
+    voiceModeRecognizer.onend = null;
+    try{ voiceModeRecognizer.stop(); }catch(e){}
+  }
+  if(mediaRecorder && mediaRecorder.state !== "inactive"){
+    try{ mediaRecorder.onstop = null; mediaRecorder.stop(); }catch(e){}
+  }
+  if(mediaStream){
+    mediaStream.getTracks().forEach(t => t.stop());
+    mediaStream = null;
+  }
+  if(audioCtx){
+    try{ audioCtx.close(); }catch(e){}
+    audioCtx = null;
+  }
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  try{ ttsPlayer.pause(); ttsPlayer.currentTime = 0; }catch(e){}
+  document.getElementById("stopSpeakBtn").style.display = "none";
+  document.getElementById("hintBar").textContent = "";
+}
+
+function startVoiceListening(){
+  if(!voiceModeOn) return;
+  if(sttFallbackMode || !(navigator.mediaDevices && window.MediaRecorder)){
+    startVoiceListeningBrowser();
+  } else {
+    startVoiceListeningWhisper();
+  }
+}
+
+/* --- Primary path: record real audio and transcribe it server-side with
+   Groq Whisper. This is what actually fixes accuracy — instead of relying
+   on the browser's own (often wrong) guess, the real recorded audio is
+   transcribed by a proper speech model that handles soft speech, accents,
+   and Hindi/English code-switching far better. --- */
+
+const VOICE_SILENCE_MS = 1200;   // stop once the user has been quiet this long
+const VOICE_MAX_MS = 20000;      // hard safety cap per utterance
+const VOICE_SPEECH_RMS = 0.018;  // volume level counted as "speaking"
+
+function pickRecorderMime(){
+  const candidates = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"];
+  for(const c of candidates){
+    if(window.MediaRecorder.isTypeSupported && window.MediaRecorder.isTypeSupported(c)) return c;
+  }
+  return "";
+}
+
+async function startVoiceListeningWhisper(){
+  const btn = document.getElementById("voiceModeBtn");
+  try{
+    mediaStream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+    });
+  }catch(e){
+    // Mic permission denied/unavailable — fall back to the browser recognizer.
+    sttFallbackMode = true;
+    startVoiceListeningBrowser();
+    return;
+  }
+  if(!voiceModeOn){ mediaStream.getTracks().forEach(t => t.stop()); return; }
+
+  btn.classList.add("listening");
+  btn.classList.remove("speaking", "thinking");
+  setVoiceHint("listening");
+
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  audioCtx = new AudioCtx();
+  const source = audioCtx.createMediaStreamSource(mediaStream);
+  analyserNode = audioCtx.createAnalyser();
+  analyserNode.fftSize = 2048;
+  source.connect(analyserNode);
+  const timeData = new Uint8Array(analyserNode.fftSize);
+
+  audioChunks = [];
+  const mimeType = pickRecorderMime();
+  mediaRecorder = mimeType ? new MediaRecorder(mediaStream, { mimeType }) : new MediaRecorder(mediaStream);
+
+  let hasSpoken = false;
+  let lastLoudAt = Date.now();
+  let stopped = false;
+
+  mediaRecorder.ondataavailable = (e) => { if(e.data && e.data.size > 0) audioChunks.push(e.data); };
+
+  const finishRecording = () => {
+    if(stopped) return;
+    stopped = true;
+    clearInterval(volumeTimer);
+    clearTimeout(voiceMaxTimer);
+    if(mediaRecorder && mediaRecorder.state !== "inactive"){
+      try{ mediaRecorder.stop(); }catch(e){}
+    }
+  };
+
+  volumeTimer = setInterval(() => {
+    if(!analyserNode) return;
+    analyserNode.getByteTimeDomainData(timeData);
+    let sumSquares = 0;
+    for(let i = 0; i < timeData.length; i++){
+      const v = (timeData[i] - 128) / 128;
+      sumSquares += v * v;
+    }
+    const rms = Math.sqrt(sumSquares / timeData.length);
+    const now = Date.now();
+    if(rms > VOICE_SPEECH_RMS){
+      hasSpoken = true;
+      lastLoudAt = now;
+    } else if(hasSpoken && (now - lastLoudAt > VOICE_SILENCE_MS)){
+      finishRecording();
+    }
+  }, 150);
+
+  voiceMaxTimer = setTimeout(finishRecording, VOICE_MAX_MS);
+
+  mediaRecorder.onstop = async () => {
+    clearInterval(volumeTimer);
+    clearTimeout(voiceMaxTimer);
+    if(mediaStream){ mediaStream.getTracks().forEach(t => t.stop()); mediaStream = null; }
+    if(audioCtx){ try{ audioCtx.close(); }catch(e){} audioCtx = null; }
+    if(!voiceModeOn) return;
+
+    if(!hasSpoken || !audioChunks.length){
+      // Nothing meaningful captured — keep listening rather than sending silence.
+      startVoiceListeningWhisper();
+      return;
+    }
+
+    btn.classList.remove("listening");
+    btn.classList.add("thinking");
+    setVoiceHint("thinking");
+
+    const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType || "audio/webm" });
+    const form = new FormData();
+    form.append("audio", blob, "utterance.webm");
+    form.append("language", lang || "");
+
+    try{
+      const res = await fetch(API_BASE + "/transcribe", { method: "POST", body: form });
+      if(res.status === 503){
+        // Server STT not configured/unavailable — switch to browser fallback
+        // for the rest of this session instead of failing repeatedly.
+        sttFallbackMode = true;
+        btn.classList.remove("thinking");
+        startVoiceListeningBrowser();
+        return;
+      }
+      const data = await res.json();
+      const text = (data.text || "").trim();
+      if(!text){
+        btn.classList.remove("thinking");
+        startVoiceListeningWhisper();
+        return;
+      }
+      await callBackend(text, true);
+    }catch(err){
+      btn.classList.remove("thinking");
+      if(voiceModeOn) setTimeout(() => { if(voiceModeOn) startVoiceListeningWhisper(); }, 600);
+    }
+  };
+
+  mediaRecorder.start();
+}
+
+/* --- Fallback path: browser-native continuous recognition, used only if
+   the microphone can't be captured directly or the server STT endpoint is
+   unavailable. Keeps listening across pauses and waits for real silence
+   before sending, so it still avoids cutting sentences short. --- */
+function startVoiceListeningBrowser(){
+  if(!voiceModeOn) return;
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert("Voice input is not supported in this browser."); stopVoiceMode(); return; }
+  const btn = document.getElementById("voiceModeBtn");
+
+  interimFinalTranscript = "";
+  clearTimeout(silenceTimer);
+
+  voiceModeRecognizer = new SR();
+  voiceModeRecognizer.lang = SPEECH_LANG[lang] || "en-IN";
+  voiceModeRecognizer.continuous = true;
+  voiceModeRecognizer.interimResults = true;
+  voiceModeRecognizer.maxAlternatives = 3;
+
+  let finalized = false;
+
+  const finishAndSend = async () => {
+    if(finalized) return;
+    finalized = true;
+    clearTimeout(silenceTimer);
+    const transcript = interimFinalTranscript.trim();
+    interimFinalTranscript = "";
+    try{ voiceModeRecognizer.stop(); }catch(e){}
+    if(!transcript){
+      if(voiceModeOn) setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, 400);
+      return;
+    }
+    btn.classList.remove("listening");
+    btn.classList.add("thinking");
+    setVoiceHint("thinking");
+    await callBackend(transcript, true);
+  };
+
+  voiceModeRecognizer.onstart = () => {
+    finalized = false;
+    btn.classList.add("listening");
+    btn.classList.remove("speaking", "thinking");
+    setVoiceHint("listening");
+  };
+
+  voiceModeRecognizer.onresult = (e) => {
+    let finalText = "";
+    let interimText = "";
+    for(let i = 0; i < e.results.length; i++){
+      const result = e.results[i];
+      if(result.isFinal){
+        let best = result[0];
+        for(let a = 1; a < result.length; a++){
+          if(result[a].confidence > best.confidence) best = result[a];
+        }
+        finalText += best.transcript;
+      } else {
+        interimText += result[0].transcript;
+      }
+    }
+    interimFinalTranscript = (finalText + " " + interimText).trim();
+    clearTimeout(silenceTimer);
+    if(interimFinalTranscript){
+      silenceTimer = setTimeout(finishAndSend, VOICE_SILENCE_MS);
+    }
+  };
+
+  voiceModeRecognizer.onspeechend = () => {
+    clearTimeout(silenceTimer);
+    silenceTimer = setTimeout(finishAndSend, 500);
+  };
+
+  voiceModeRecognizer.onerror = (e) => {
+    btn.classList.remove("listening");
+    const delay = e.error === "no-speech" ? 300 : 900;
+    if(voiceModeOn) {
+      clearTimeout(voiceRestartTimer);
+      voiceRestartTimer = setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, delay);
+    }
+  };
+
+  voiceModeRecognizer.onend = () => {
+    btn.classList.remove("listening");
+    if(voiceModeOn && !finalized){
+      clearTimeout(voiceRestartTimer);
+      voiceRestartTimer = setTimeout(() => { if(voiceModeOn) startVoiceListening(); }, 250);
+    }
+  };
+
+  voiceModeRecognizer.start();
+}
+
+async function callBackend(message, showUserBubble, userLabel){
+  if(showUserBubble) addMessage("user", userLabel || message);
+  addTyping();
+  try{
+    const res = await fetch(API_BASE + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({message, session_id: sessionId})
+    });
+    const data = await res.json();
+    removeTyping();
+    document.getElementById("voiceModeBtn").classList.remove("thinking");
+    await addMessageBotTyped(data.reply || ""); // reveal word-by-word like a live reply
+    addOptions(data.options);
+    applyInputModeForType(data.type);
+    playReply(data.reply || "", data.audio || null); // assistant always reads its reply aloud
+  }catch(err){
+    removeTyping();
+    document.getElementById("voiceModeBtn").classList.remove("thinking");
+    const errMsg = lang === "hi" ? "कुछ गड़बड़ हो गई, कृपया दोबारा कोशिश करें।" : "Something went wrong, please try again.";
+    addMessage("bot", errMsg);
+    playReply(errMsg, null);
+    console.error(err);
+  }
+}
+
+function sendTyped(){
+  const input = document.getElementById("textInput");
+  const text = input.value.trim();
+  if(!text) return;
+  const isPassword = input.type === "password";
+  input.value = "";
+  callBackend(text, true, isPassword ? "••••••••" : text);
+}
+
+</script>
+</body>
+</html>

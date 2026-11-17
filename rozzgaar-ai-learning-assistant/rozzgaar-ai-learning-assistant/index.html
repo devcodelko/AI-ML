@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />
+<title>Rozzgaar AI Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --rz-primary: #b52b24;
+    --rz-primary-dark: #7d1f1a;
+    --rz-primary-soft: #fff1ef;
+    --rz-navy: #171a24;
+    --rz-bg: #f7f8fa;
+    --rz-surface: #ffffff;
+    --rz-text: #171923;
+    --rz-muted: #737887;
+    --rz-border: #e9eaf0;
+    --rz-shadow: 0 24px 70px rgba(18, 22, 33, .20);
+  }
+
+  #rz-btn, #rz-win, #rz-win * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans','Noto Sans Devanagari','Segoe UI',Arial,sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Floating launcher */
+  #rz-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 62px;
+    height: 62px;
+    border: 0;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #c63a31, #8f211b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    cursor: pointer;
+    z-index: 999999;
+    box-shadow: 0 14px 32px rgba(127, 31, 26, .35);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  #rz-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 18px 38px rgba(127, 31, 26, .42);
+  }
+
+  #rz-btn:focus-visible {
+    outline: 3px solid #f4b942;
+    outline-offset: 3px;
+  }
+
+  #rz-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  #rz-btn.hidden { display: none; }
+
+  /* Main chatbot shell */
+  #rz-win {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 430px;
+    height: min(760px, calc(100vh - 36px));
+    max-width: calc(100vw - 36px);
+    background: #ffffff;
+    border: 1px solid rgba(20,24,35,.08);
+    border-radius: 24px;
+    box-shadow: 0 24px 70px rgba(18,22,33,.20);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999999;
+    animation: rzOpen .24s cubic-bezier(.2,.85,.25,1);
+  }
+
+  #rz-win.hidden { display: none; }
+
+  /* Header / navbar */
+  .rz-head {
+    position: relative;
+    flex-shrink: 0;
+    color: #171923;
+    background: #ffffff;
+    padding: 12px 14px 9px;
+    border-bottom: 1px solid #e7e8ed;
+    overflow: hidden;
+  }
+
+  .rz-head::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: #b52b24;
+  }
+
+  .rz-head-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rz-head-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    background: #ffffff;
+    border: 1px solid #e5e6ea;
+    box-shadow: 0 3px 10px rgba(20,24,35,.08);
+    position: relative;
+  }
+
+  .rz-head-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .rz-head-logo .online {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #35c878;
+    border: 2px solid #fff;
+  }
+
+  .rz-head-txt {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .rz-head-title {
+    color: #171923;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -.2px;
+  }
+
+  .rz-head-sub {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 3px;
+    color: #7a7f8d;
+    font-size: 11.5px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rz-head-sub::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #35c878;
+  }
+
+  #rz-close {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #e3e4e9;
+    border-radius: 11px;
+    background: #f7f8fa;
+    color: #4f5461;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background .15s ease, transform .15s ease;
+  }
+
+  #rz-close:hover {
+    background: #eef0f3;
+    transform: rotate(4deg);
+  }
+
+  #rz-close:focus-visible {
+    outline: 2px solid #b52b24;
+    outline-offset: 2px;
+  }
+
+  /* One compact action row — no duplicate welcome cards */
+  .rz-quick {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 9px 0 1px;
+    scrollbar-width: none;
+  }
+
+  .rz-quick::-webkit-scrollbar { display: none; }
+
+  .rz-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 31px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    color: #555a68;
+    background: #f6f7f9;
+    border: 1px solid #e1e2e7;
+    font-size: 11px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease, transform .12s ease;
+  }
+
+  .rz-chip:hover {
+    color: #8f211b;
+    background: #fff2f0;
+    border-color: #e6b8b3;
+  }
+
+  .rz-chip:active,
+  .rz-chip.selected {
+    color: #fff;
+    background: #b52b24;
+    border-color: #b52b24;
+    transform: scale(.97);
+  }
+
+  .rz-chip:disabled { opacity: .45; cursor: not-allowed; }
+
+  .rz-chip:focus-visible {
+    outline: 2px solid #b52b24;
+    outline-offset: 2px;
+  }
+
+  /* Message area */
+  .rz-msgs {
+    flex: 1;
+    min-height: 0;
+    padding: 22px 17px 18px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    background:
+      radial-gradient(circle at 50% -15%, rgba(181,43,36,.055), transparent 32%),
+      var(--rz-bg);
+    scroll-behavior: smooth;
+  }
+
+  .rz-msgs::-webkit-scrollbar { width: 5px; }
+  .rz-msgs::-webkit-scrollbar-thumb {
+    background: #d9dce4;
+    border-radius: 99px;
+  }
+
+  /* Welcome */
+  .rz-welcome {
+    width: 100%;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px 3px 8px;
+    animation: rzFade .25s ease;
+  }
+
+  @keyframes rzFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .rz-welcome-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    margin-bottom: 17px;
+    background: linear-gradient(145deg, #c23a31, #8b211b);
+    box-shadow: 0 13px 28px rgba(181,43,36,.25);
+    border: 5px solid #fff;
+  }
+
+  .rz-welcome-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .rz-welcome-title {
+    color: var(--rz-text);
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 800;
+    letter-spacing: -.55px;
+    margin-bottom: 8px;
+  }
+
+  .rz-welcome-sub {
+    max-width: 330px;
+    color: var(--rz-muted);
+    font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  /* Chat messages */
+  .rz-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    max-width: 100%;
+    animation: rzMessage .18s ease;
+  }
+
+  @keyframes rzMessage {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .rz-row.user {
+    flex-direction: row-reverse;
+    align-self: flex-end;
+  }
+
+  .rz-av {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rz-av.bot {
+    padding: 6px;
+    background: #202432;
+    box-shadow: 0 3px 8px rgba(20,24,35,.13);
+  }
+
+  .rz-av.bot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .rz-av.usr {
+    color: #8f211b;
+    background: #f2d9d6;
+  }
+
+  .rz-bub {
+    max-width: 82%;
+    padding: 11px 13px;
+    border-radius: 17px;
+    font-size: 13.5px;
+    line-height: 1.58;
+    box-shadow: 0 2px 8px rgba(25,29,40,.045);
+  }
+
+  .rz-bub.user {
+    color: #fff;
+    background: linear-gradient(135deg, #b52b24, #8e211b);
+    border-bottom-right-radius: 5px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    box-shadow: 0 5px 14px rgba(181,43,36,.18);
+  }
+
+  .rz-bub.bot {
+    color: var(--rz-text);
+    background: #fff;
+    border: 1px solid var(--rz-border);
+    border-bottom-left-radius: 5px;
+  }
+
+  .rz-bub.bot.error {
+    color: #a52a2a;
+    background: #fff4f4;
+    border-color: #f0c4c4;
+  }
+
+  /* Markdown */
+  .rz-content { word-break: break-word; }
+  .rz-content > *:first-child { margin-top: 0 !important; }
+  .rz-content > *:last-child { margin-bottom: 0 !important; }
+  .rz-content p { margin: 0 0 9px; }
+  .rz-content strong { font-weight: 800; }
+  .rz-content em { font-style: italic; }
+
+  .rz-content code {
+    background: #f0f1f5;
+    border: 1px solid #e5e6eb;
+    padding: 2px 5px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  }
+
+  .rz-content .rz-h {
+    color: var(--rz-primary-dark);
+    font-weight: 800;
+    font-size: 15px;
+    margin: 13px 0 7px;
+  }
+
+  .rz-content .rz-hr {
+    height: 1px;
+    background: var(--rz-border);
+    margin: 13px 0;
+  }
+
+  .rz-content ul.rz-list,
+  .rz-content ol.rz-list {
+    margin: 0 0 9px;
+    padding-left: 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .rz-content ul.rz-list { list-style: disc; }
+  .rz-content ol.rz-list { list-style: decimal; }
+
+  .rz-content .rz-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 4px 0 9px;
+  }
+
+  .rz-content .rz-opt {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    padding: 9px 10px;
+    border-radius: 11px;
+    background: #f8f9fb;
+    border: 1px solid #e7e8ed;
+  }
+
+  .rz-content .rz-opt-letter {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    flex-shrink: 0;
+    background: var(--rz-primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rz-content .rz-opt-text {
+    font-size: 13px;
+    line-height: 1.48;
+  }
+
+  .rz-content .rz-answer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1f7a3b;
+    background: #edf9f1;
+    border: 1px solid #c9e9d1;
+    font-weight: 750;
+    font-size: 12.5px;
+    padding: 8px 11px;
+    border-radius: 11px;
+    margin: 2px 0 9px;
+  }
+
+  .rz-content .rz-answer-badge {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2fa84f;
+    color: #fff;
+    font-size: 10px;
+  }
+
+  /* Typing */
+  .rz-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 1px;
+  }
+
+  .rz-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9da2af;
+    animation: rzBounce 1.1s infinite ease-in-out;
+  }
+
+  .rz-dots span:nth-child(2) { animation-delay: .15s; }
+  .rz-dots span:nth-child(3) { animation-delay: .3s; }
+
+  @keyframes rzBounce {
+    0%,60%,100% { transform: translateY(0); opacity: .45; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  .cursor {
+    display: inline-block;
+    color: var(--rz-primary);
+    animation: rzBlink .9s step-end infinite;
+    margin-left: 1px;
+    font-weight: 800;
+  }
+
+  .cursor::after { content: "▍"; }
+
+  @keyframes rzBlink {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Listen button */
+  .rz-speak {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 9px;
+    padding: 6px 10px;
+    border: 1px solid var(--rz-border);
+    border-radius: 999px;
+    background: #f7f8fa;
+    color: var(--rz-primary);
+    cursor: pointer;
+    font-size: 11.5px;
+    font-weight: 750;
+    transition: .15s ease;
+  }
+
+  .rz-speak:hover { background: var(--rz-primary-soft); }
+  .rz-speak.on {
+    color: #fff;
+    background: var(--rz-primary);
+    border-color: var(--rz-primary);
+  }
+
+  .rz-speak:focus-visible {
+    outline: 2px solid var(--rz-primary);
+    outline-offset: 2px;
+  }
+
+  /* Composer */
+  .rz-input-row {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 13px 13px;
+    background: rgba(255,255,255,.97);
+    border-top: 1px solid var(--rz-border);
+  }
+
+  .rz-input-capsule {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 4px 3px 15px;
+    border: 1px solid #dedfe5;
+    border-radius: 17px;
+    background: #f7f8fa;
+    transition: .15s ease;
+  }
+
+  .rz-input-capsule:focus-within {
+    background: #fff;
+    border-color: #c98782;
+    box-shadow: 0 0 0 3px rgba(181,43,36,.07);
+  }
+
+  #rz-input {
+    min-width: 0;
+    flex: 1;
+    padding: 9px 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--rz-text);
+    font-size: 13.5px;
+  }
+
+  #rz-input::placeholder {
+    color: #9297a3;
+    font-size: 13px;
+  }
+
+  #rz-input:disabled { opacity: .55; }
+
+  #rz-mic {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #747987;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+  }
+
+  #rz-mic:hover:not(:disabled) {
+    color: var(--rz-primary);
+    background: var(--rz-primary-soft);
+  }
+
+  #rz-mic.listening {
+    color: #fff;
+    background: #df5148;
+  }
+
+  #rz-mic.listening::before,
+  #rz-mic.listening::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 14px;
+    border: 2px solid rgba(223,81,72,.45);
+    animation: rzRipple 1.6s ease-out infinite;
+  }
+
+  #rz-mic.listening::after { animation-delay: .5s; }
+
+  @keyframes rzRipple {
+    0% { transform: scale(.9); opacity: .9; }
+    100% { transform: scale(1.45); opacity: 0; }
+  }
+
+  #rz-mic svg { position: relative; z-index: 1; }
+  #rz-mic:disabled { opacity: .4; cursor: not-allowed; }
+
+  #rz-send {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(145deg, #c23a31, #8b211b);
+    box-shadow: 0 7px 16px rgba(181,43,36,.24);
+    cursor: pointer;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+
+  #rz-send:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 19px rgba(181,43,36,.30);
+  }
+
+  #rz-send:active:not(:disabled) { transform: scale(.95); }
+  #rz-send:disabled { opacity: .45; cursor: not-allowed; }
+
+  #rz-send:focus-visible,
+  #rz-mic:focus-visible {
+    outline: 2px solid var(--rz-primary);
+    outline-offset: 2px;
+  }
+
+  /* Composer: input + microphone + send always stay on one line */
+  .rz-input-row {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 10px 13px 13px;
+    background: rgba(255,255,255,.98);
+    border-top: 1px solid #e7e8ed;
+  }
+
+  .rz-input-capsule {
+    min-width: 0;
+    flex: 1 1 auto;
+    width: auto;
+  }
+
+  #rz-send {
+    flex: 0 0 43px;
+    width: 43px;
+    min-width: 43px;
+    height: 43px;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    #rz-win {
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      max-width: 100vw;
+      height: 100dvh;
+      border-radius: 0;
+      border: 0;
+    }
+
+    #rz-btn {
+      right: 16px;
+      bottom: max(16px, env(safe-area-inset-bottom));
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+    }
+
+    .rz-msgs { padding-left: 13px; padding-right: 13px; }
+    .rz-bub { max-width: 84%; }
+  }
+
+  @media (max-width: 380px) {
+    .rz-welcome-title { font-size: 19px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #rz-win, .rz-row, .rz-welcome, .rz-dots span, .cursor,
+    #rz-mic.listening::before, #rz-mic.listening::after {
+      animation: none !important;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+<button id="rz-btn" aria-label="Open Rozzgaar AI Assistant">
+  <img src="https://rozzgaar.in/assets/image/favicon.svg" alt="Rozzgaar Logo" class="logo-img">
+</button>
+
+<div id="rz-win" class="hidden" role="dialog" aria-label="Rozzgaar AI Assistant">
+
+  <div class="rz-head">
+    <div class="rz-head-top">
+      <div class="rz-head-logo" aria-hidden="true">
+        <img src="https://rozzgaar.in/assets/image/favicon.svg" alt="Rozzgaar Logo" class="logo-img">
+        <span class="online" aria-hidden="true"></span>
+      </div>
+
+      <div class="rz-head-txt">
+        <div class="rz-head-title">Rozzgaar AI Assistant</div>
+        <div class="rz-head-sub" id="rz-ctx-label">Chapter 1: Building the Founder's Mind</div>
+      </div>
+
+      <button id="rz-close" aria-label="Close chat" title="Close">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+          stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="rz-quick" id="rz-quick">
+      <button class="rz-chip" data-prompt="Summarize this chapter.">📝 Summarize</button>
+      <button class="rz-chip" data-prompt="Generate 10 MCQs from this chapter.">❓ MCQs</button>
+      <button class="rz-chip" data-prompt="Give me revision notes for this chapter.">📚 Revision Notes</button>
+      <button class="rz-chip" data-prompt="Translate this chapter to Hindi.">🌐 Translate to Hindi</button>
+    </div>
+  </div>
+
+  <div class="rz-msgs" id="rz-msgs" aria-live="polite">
+    <div class="rz-welcome" id="rz-welcome">
+      <div class="rz-welcome-logo">
+        <img src="https://rozzgaar.in/assets/image/favicon.svg" alt="Rozzgaar Logo">
+      </div>
+
+      <div class="rz-welcome-title">How can I help you today?</div>
+      <div class="rz-welcome-sub">
+        Ask anything about this chapter. I can explain concepts, create practice questions,
+        make revision notes, or translate the content for you.
+      </div>
+    </div>
+  </div>
+
+  <form id="rz-form" class="rz-input-row">
+    <div class="rz-input-capsule">
+      <input type="text" id="rz-input"
+        placeholder="Message Rozzgaar AI..."
+        autocomplete="off" required />
+
+      <button type="button" id="rz-mic" aria-label="Voice input" title="Voice input">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+          <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"/>
+          <path d="M19 11a1 1 0 0 0-2 0 5 5 0 0 1-10 0 1 1 0 0 0-2 0
+                   7 7 0 0 0 6 6.92V20H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2v-2.08
+                   A7 7 0 0 0 19 11z"/>
+        </svg>
+      </button>
+    </div>
+
+    <button type="submit" id="rz-send" aria-label="Send message" title="Send">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M3.4 20.6 21 12 3.4 3.4 5 10.5 15 12 5 13.5z"/>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<script>
+(function () {
+  const API_BASE = window.location.origin;
+  const LOGO = "https://rozzgaar.in/assets/image/favicon.svg";
+  const SPEAK_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M3 10v4h4l5 5V5L7 10H3z"/><path d="M16.5 12c0-1.77-.77-3.29-2-4.36v8.72c1.23-1.07 2-2.59 2-4.36z"/><path d="M14.5 3.23v2.06c2.89 1.24 5 4.14 5 7.71s-2.11 6.47-5 7.71v2.06c4.01-1.29 7-5.24 7-9.77s-2.99-8.48-7-9.77z"/></svg><span>Listen</span>';
+  const STOP_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg><span>Stop</span>';
+  const MIC_ICON = '<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"/><path d="M19 11a1 1 0 0 0-2 0 5 5 0 0 1-10 0 1 1 0 0 0-2 0 7 7 0 0 0 6 6.92V20H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2v-2.08A7 7 0 0 0 19 11z"/></svg>';
+  const MIC_STOP_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>';
+  const USER_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-9 2.2-9 5v3h18v-3c0-2.8-4.6-5-9-5z"/></svg>';
+
+  function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  function inline(s) {
+    let h = esc(s);
+    h = h.replace(/`([^`]+)`/g, "<code>$1</code>");
+    h = h.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    h = h.replace(/__(.+?)__/g, "<strong>$1</strong>");
+    h = h.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, "$1<em>$2</em>");
+    return h;
+  }
+
+  // Parses the model's markdown-ish reply into clean semantic HTML blocks:
+  // headings, horizontal rules, bullet/numbered lists, lettered MCQ options
+  // (rendered as option cards), "Correct Answer: X" call-outs, and paragraphs.
+  function md(raw) {
+    const lines = String(raw).replace(/\r\n/g, "\n").split("\n");
+    const blocks = [];
+    const RE_HEAD = /^\s{0,3}(#{1,6})\s+(.*)$/;
+    const RE_HR = /^\s{0,3}(-{3,}|\*{3,}|_{3,})\s*$/;
+    const RE_UL = /^\s{0,3}[-*•]\s+/;
+    const RE_OL = /^\s{0,3}\d+[.)]\s+/;
+    const RE_OPT = /^\s{0,3}([A-Da-d])[.)]\s+(.*)$/;
+    let i = 0;
+
+    while (i < lines.length) {
+      const line = lines[i];
+      if (!line.trim()) { i++; continue; }
+
+      let m = line.match(RE_HEAD);
+      if (m) { blocks.push({ type: "h", text: m[2].trim() }); i++; continue; }
+
+      if (RE_HR.test(line)) { blocks.push({ type: "hr" }); i++; continue; }
+
+      if (RE_OPT.test(line)) {
+        const items = [];
+        while (i < lines.length && RE_OPT.test(lines[i])) {
+          const mm = lines[i].match(RE_OPT);
+          items.push({ letter: mm[1].toUpperCase(), text: mm[2].trim() });
+          i++;
+        }
+        blocks.push({ type: "opts", items });
+        continue;
+      }
+
+      if (RE_UL.test(line)) {
+        const items = [];
+        while (i < lines.length && RE_UL.test(lines[i])) {
+          items.push(lines[i].replace(RE_UL, "").trim());
+          i++;
+        }
+        blocks.push({ type: "ul", items });
+        continue;
+      }
+
+      if (RE_OL.test(line)) {
+        const items = [];
+        while (i < lines.length && RE_OL.test(lines[i])) {
+          items.push(lines[i].replace(RE_OL, "").trim());
+          i++;
+        }
+        blocks.push({ type: "ol", items });
+        continue;
+      }
+
+      const para = [];
+      while (
+        i < lines.length && lines[i].trim() &&
+        !RE_HEAD.test(lines[i]) && !RE_HR.test(lines[i]) &&
+        !RE_OPT.test(lines[i]) && !RE_UL.test(lines[i]) && !RE_OL.test(lines[i])
+      ) {
+        para.push(lines[i].trim());
+        i++;
+      }
+      const text = para.join(" ");
+      const plain = text.replace(/\*\*/g, "").replace(/__/g, "").trim();
+      if (/^correct answer\s*:/i.test(plain)) {
+        blocks.push({ type: "answer", text: plain });
+      } else {
+        blocks.push({ type: "p", text });
+      }
+    }
+
+    return blocks.map(b => {
+      if (b.type === "h") return `<p class="rz-h">${inline(b.text)}</p>`;
+      if (b.type === "hr") return `<div class="rz-hr"></div>`;
+      if (b.type === "ul") return `<ul class="rz-list">${b.items.map(it => `<li>${inline(it)}</li>`).join("")}</ul>`;
+      if (b.type === "ol") return `<ol class="rz-list">${b.items.map(it => `<li>${inline(it)}</li>`).join("")}</ol>`;
+      if (b.type === "opts") {
+        return `<div class="rz-opts">${b.items.map(it =>
+          `<div class="rz-opt"><span class="rz-opt-letter">${it.letter}</span><span class="rz-opt-text">${inline(it.text)}</span></div>`
+        ).join("")}</div>`;
+      }
+      if (b.type === "answer") {
+        return `<div class="rz-answer"><span class="rz-answer-badge">✓</span>${inline(b.text)}</div>`;
+      }
+      return `<p>${inline(b.text)}</p>`;
+    }).join("");
+  }
+
+  function speechClean(raw) {
+    return String(raw)
+      .replace(/\*\*(.+?)\*\*/g,"$1").replace(/__(.+?)__/g,"$1").replace(/\*(.+?)\*/g,"$1")
+      .replace(/`([^`]*)`/g,"$1").replace(/\[([^\]]+)\]\(([^)]+)\)/g,"$1")
+      .replace(/^\s{0,3}#{1,6}\s*/gm,"").replace(/^\s{0,3}[-*•]\s+/gm,"").replace(/^\s{0,3}\d+[.)]\s+/gm,"")
+      .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F1E6}-\u{1F1FF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}]/gu,"")
+      .replace(/[#*_~`>|]/g,"").replace(/\n{2,}/g,". ").replace(/\n/g," ").replace(/\s{2,}/g," ").trim();
+  }
+
+  function speechLang(t) { return /[\u0900-\u097F]/.test(t) ? "hi-IN" : "en-IN"; }
+
+  function splitForSpeech(text) {
+    const parts = text.split(/(?<=[.!?।॥])\s+/);
+    const chunks = [];
+    let cur = "";
+    parts.forEach(p => {
+      p = p.trim();
+      if (!p) return;
+      if ((cur + " " + p).trim().length > 170) {
+        if (cur) chunks.push(cur.trim());
+        cur = p;
+      } else {
+        cur = (cur + " " + p).trim();
+      }
+    });
+    if (cur) chunks.push(cur.trim());
+    return chunks.length ? chunks : [text];
+  }
+
+  let voices = [];
+  function refreshVoices() { voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; }
+  if (window.speechSynthesis) { refreshVoices(); window.speechSynthesis.onvoiceschanged = refreshVoices; }
+  function waitForVoices(cb) {
+    refreshVoices();
+    if (voices.length) { cb(); return; }
+    let tries = 0;
+    const timer = setInterval(() => {
+      refreshVoices();
+      tries++;
+      if (voices.length || tries > 20) { clearInterval(timer); cb(); }
+    }, 150);
+  }
+  function pickVoice(lang) {
+    if (!voices.length) refreshVoices();
+    if (!voices.length) return null;
+    const base = lang.split("-")[0].toLowerCase();
+    return voices.find(v => v.lang && v.lang.toLowerCase() === lang.toLowerCase())
+      || voices.find(v => v.lang && v.lang.toLowerCase().startsWith(base) && /in|india/i.test(v.name+v.lang))
+      || voices.find(v => v.lang && v.lang.toLowerCase().startsWith(base))
+      || (base === "hi" ? voices.find(v => /hindi/i.test(v.name)) : null)
+      || voices.find(v => v.default)
+      || voices[0]
+      || null;
+  }
+
+  const speechState = { btn: null, queue: [], idx: 0, keepAlive: null, active: false };
+  function setSpeakState(btn, on) {
+    btn.innerHTML = on ? STOP_ICON : SPEAK_ICON;
+    btn.classList.toggle("on", on);
+  }
+  function clearKeepAlive() {
+    if (speechState.keepAlive) { clearInterval(speechState.keepAlive); speechState.keepAlive = null; }
+  }
+  function stopSpeaking() {
+    clearKeepAlive();
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (speechState.btn) setSpeakState(speechState.btn, false);
+    speechState.btn = null;
+    speechState.queue = [];
+    speechState.idx = 0;
+    speechState.active = false;
+  }
+  function speakNextChunk(btn) {
+    if (!speechState.active || speechState.btn !== btn) return;
+    if (speechState.idx >= speechState.queue.length) { stopSpeaking(); return; }
+    const chunkText = speechState.queue[speechState.idx];
+    const lang = speechLang(chunkText);
+    const u = new SpeechSynthesisUtterance(chunkText);
+    const v = pickVoice(lang);
+    u.lang = v ? v.lang : lang;
+    if (v) u.voice = v;
+    u.rate = 0.97;
+    u.pitch = 1;
+    u.onend = () => { speechState.idx++; speakNextChunk(btn); };
+    u.onerror = () => { speechState.idx++; if (speechState.idx < speechState.queue.length) speakNextChunk(btn); else stopSpeaking(); };
+    window.speechSynthesis.speak(u);
+  }
+  function toggleSpeak(raw, btn) {
+    if (!window.speechSynthesis) { alert("Voice playback isn't supported in this browser."); return; }
+    if (speechState.btn === btn && speechState.active) { stopSpeaking(); return; }
+    stopSpeaking();
+    const clean = speechClean(raw);
+    if (!clean) return;
+    const chunks = splitForSpeech(clean);
+    waitForVoices(() => {
+      speechState.btn = btn;
+      speechState.queue = chunks;
+      speechState.idx = 0;
+      speechState.active = true;
+      setSpeakState(btn, true);
+      clearKeepAlive();
+      speechState.keepAlive = setInterval(() => {
+        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+          window.speechSynthesis.pause();
+          window.speechSynthesis.resume();
+        }
+      }, 12000);
+      speakNextChunk(btn);
+    });
+  }
+  function trySpeakCommand(t) {
+    const norm = t.trim().toLowerCase().replace(/[.!?।]+$/g, "");
+    const commands = ["speak", "speak it", "speak that", "speak this", "read it", "read that", "read this",
+      "read it out", "read this out", "say it", "say that", "say this",
+      "बोलो", "बोल दो", "पढ़ो", "पढ़ के सुनाओ", "सुनाओ", "इसे पढ़ो", "इसे सुनाओ", "इसे बोलो", "जोर से बोलो", "जोर से पढ़ो"];
+    if (commands.includes(norm) || commands.includes(t.trim())) {
+      const btns = msgsEl.querySelectorAll(".rz-speak");
+      if (btns.length) { const last = btns[btns.length - 1]; if (!last.classList.contains("on")) last.click(); }
+      return true;
+    }
+    return false;
+  }
+
+  function sessionId() {
+    let id = localStorage.getItem("rz_ai_session_id");
+    if (!id) { id = crypto.randomUUID(); localStorage.setItem("rz_ai_session_id", id); }
+    return id;
+  }
+  const SESSION_ID = sessionId();
+  const ctx = { courseId: "edp", moduleId: "Module 1", chapterId: "1", chapterTitle: "Chapter 1: Building the Founder's Mind" };
+
+  const btn = document.getElementById("rz-btn");
+  const win = document.getElementById("rz-win");
+  const closeBtn = document.getElementById("rz-close");
+  const msgsEl = document.getElementById("rz-msgs");
+  const welcomeEl = document.getElementById("rz-welcome");
+  const form = document.getElementById("rz-form");
+  const input = document.getElementById("rz-input");
+  const sendBtn = document.getElementById("rz-send");
+  const quick = document.getElementById("rz-quick");
+  const micBtn = document.getElementById("rz-mic");
+  const chips = quick.querySelectorAll(".rz-chip");
+
+  function hideWelcome() {
+    if (welcomeEl && welcomeEl.parentNode) welcomeEl.remove();
+  }
+
+  function addUser(text) {
+    const row = document.createElement("div");
+    row.className = "rz-row user";
+    row.innerHTML = `<div class="rz-av usr">${USER_ICON}</div>`;
+    const bub = document.createElement("div");
+    bub.className = "rz-bub user";
+    bub.textContent = text;
+    row.appendChild(bub);
+    msgsEl.appendChild(row);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+  }
+
+  function addBotShell() {
+    const row = document.createElement("div");
+    row.className = "rz-row bot";
+    row.innerHTML = `<div class="rz-av bot"><img src="${LOGO}" alt="Rozzgaar"></div>`;
+    const bub = document.createElement("div");
+    bub.className = "rz-bub bot";
+    const content = document.createElement("div");
+    content.className = "rz-content";
+    bub.appendChild(content);
+    row.appendChild(bub);
+    msgsEl.appendChild(row);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    return { bub, content };
+  }
+
+  function showTyping(content) {
+    content.innerHTML = '<span class="rz-dots"><span></span><span></span><span></span></span>';
+  }
+
+  function finalizeBot(bub, content, raw, autoSpeak) {
+    const c = content.querySelector(".cursor");
+    if (c) c.remove();
+    if (!raw.trim()) { content.innerHTML = "<p>No response received.</p>"; return; }
+    const speakBtn = document.createElement("button");
+    speakBtn.type = "button";
+    speakBtn.className = "rz-speak";
+    setSpeakState(speakBtn, false);
+    speakBtn.addEventListener("click", () => toggleSpeak(raw, speakBtn));
+    bub.appendChild(speakBtn);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    if (autoSpeak) toggleSpeak(raw, speakBtn);
+  }
+
+  function setBusy(busy) {
+    sendBtn.disabled = busy;
+    micBtn.disabled = busy;
+    input.disabled = busy;
+    chips.forEach(c => c.disabled = busy);
+  }
+
+  function selectChip(chip) {
+    chips.forEach(c => c.classList.remove("selected"));
+    chip.classList.add("selected");
+    setTimeout(() => chip.classList.remove("selected"), 600);
+  }
+
+  async function send(message, opts) {
+    opts = opts || {};
+    const autoSpeak = !!opts.voice;
+    hideWelcome();
+    stopSpeaking();
+    addUser(message);
+    input.value = "";
+    setBusy(true);
+
+    const { bub, content } = addBotShell();
+    showTyping(content);
+
+    let raw = "";
+    let first = false;
+
+    try {
+      const res = await fetch(`${API_BASE}/api/chat/stream`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          session_id: SESSION_ID,
+          course_id: ctx.courseId,
+          module_id: ctx.moduleId,
+          chapter_id: ctx.chapterId,
+          message: message,
+        }),
+      });
+
+      if (!res.ok || !res.body) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || `Request failed: ${res.status}`);
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        let idx;
+        while ((idx = buffer.indexOf("\n\n")) !== -1) {
+          const evtRaw = buffer.slice(0, idx);
+          buffer = buffer.slice(idx + 2);
+          if (!evtRaw.startsWith("data:")) continue;
+          const jsonStr = evtRaw.slice(5).trim();
+          if (!jsonStr) continue;
+          let evt;
+          try { evt = JSON.parse(jsonStr); } catch (e) { continue; }
+
+          if (evt.type === "chunk") {
+            if (!first) { first = true; content.innerHTML = ""; }
+            raw += evt.text;
+            content.innerHTML = md(raw) + '<span class="cursor"></span>';
+            msgsEl.scrollTop = msgsEl.scrollHeight;
+          } else if (evt.type === "error") {
+            throw new Error(evt.message || "Something went wrong while generating a response.");
+          }
+        }
+      }
+
+      finalizeBot(bub, content, raw, autoSpeak);
+    } catch (err) {
+      content.innerHTML = "";
+      content.textContent = `Error: ${err.message}`;
+      bub.classList.add("error");
+    } finally {
+      setBusy(false);
+      input.focus();
+    }
+  }
+
+  // ---- voice input ----
+  let recognition = null, listening = false;
+  function micIdle() { micBtn.classList.remove("listening"); micBtn.innerHTML = MIC_ICON; listening = false; }
+  function micOn() { micBtn.classList.add("listening"); micBtn.innerHTML = MIC_STOP_ICON; listening = true; }
+  function initSpeech() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { micBtn.style.opacity = ".4"; micBtn.title = "Speech recognition not supported"; return; }
+    recognition = new SR();
+    recognition.lang = "en-IN";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.onresult = (e) => {
+      const t = e.results[e.results.length - 1][0].transcript.trim();
+      micIdle();
+      if (!t) return;
+      if (trySpeakCommand(t)) return;
+      input.value = t;
+      setTimeout(() => send(t, { voice: true }), 150);
+    };
+    recognition.onerror = (e) => { micIdle(); if (e.error === "not-allowed") alert("Microphone access denied. Please allow microphone in browser settings."); };
+    recognition.onend = micIdle;
+  }
+  function toggleListen() {
+    if (!recognition) { initSpeech(); if (!recognition) return; }
+    if (listening) { recognition.stop(); micIdle(); return; }
+    try { recognition.start(); micOn(); }
+    catch (e) { if (e.name === "InvalidStateError") { recognition.stop(); micIdle(); } else alert("Could not start voice recognition: " + e.message); }
+  }
+  initSpeech();
+  micBtn.addEventListener("click", toggleListen);
+
+  btn.addEventListener("click", () => {
+    win.classList.remove("hidden");
+    btn.classList.add("hidden");
+    input.focus();
+  });
+
+  closeBtn.addEventListener("click", () => {
+    win.classList.add("hidden");
+    btn.classList.remove("hidden");
+    stopSpeaking();
+    if (listening && recognition) { try { recognition.stop(); } catch (e) {} micIdle(); }
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const m = input.value.trim();
+    if (!m) return;
+    send(m);
+  });
+
+  quick.addEventListener("click", (e) => {
+    const chip = e.target.closest(".rz-chip");
+    if (!chip || chip.disabled) return;
+    selectChip(chip);
+    send(chip.dataset.prompt);
+  });
+
+})();
+</script>
+</body>
+</html>
